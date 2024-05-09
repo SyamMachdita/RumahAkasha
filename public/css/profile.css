@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: 'Montserrat';
+}
+
+/* body */
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Root */
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+/* Section */
+section{
+    margin-top: 120px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+/* Navbar */
+.navbar.bg-body-tertiary{
+    position:sticky !important;
+    background-color: var(--primary-color) !important;
+    border-bottom: #f2f2f2;
+    box-shadow: 0 5px 10px var(--secondary-color) !important;
+    z-index: 2;
+}
+
+.navbar-brand{
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.navbar-brand a{
+    text-decoration: none;
+    color: var(--header-color) !important;
+}
+
+.navbar-brand a:hover{
+    font-weight: bolder;
+}
+
+.container-fluid{
+    margin: none;
+    padding: 0 !important;
+}
+
+.menu {
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    margin-right: 50px;
+    padding-right: 0px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    font-weight: 500;
+    display: inline;
+    margin: 0 10px;
+}
+
+.menu a {
+    font-weight: 600;
+    color: var(--header-color);
+    text-decoration: none;
+}
+
+
+/* Cerita Kami */
+
+.header{
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.cerita {
+    display: flex;
+}
+
+.cerita-img {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.cerita-content {
+    width: 50%;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cerita-content h4{
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+}
+
+.cerita-img img {
+    width: 100%;
+}
+
+/* Our Barista */
+
+h1.header.our-barista{
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card {
+    border-radius: 20px !important;
+    margin: auto;
+    width: 400px;
+    box-shadow: var(--box-shadow);
+    z-index: 1;
+    overflow: auto;
+}
+
+.card img{
+    overflow: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.card-text{
+    margin-top: 10px;
+    text-align: justify;
+}
+
+
+/* Footer */
+
+footer{
+    margin-top: 50px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+
+}
+
+.column {
+    width: 190px;
+    flex: 1;
+    margin-right: 40px;
+}
+
+.column:last-child {
+    margin-right: 0;
+}
+
+.column.left-align {
+    text-align: left;
+}
+
+.column.right-align {
+    text-align: right;
+    /* margin-right: 0; */
+}
+
+.logo img {
+    max-height: 100px;
+}
+
+.column h4{
+    text-align: right;
+    color: var(--header-color);
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.alamat p{
+    color: var(--header-color);
+    font-size: 14px;
+}
+
+.contact p,
+.sosial p {
+    font-size: 14px;
+    color: var(--header-color);
+    margin: 5px 0;
+}
+
+.sosial img{
+    width: 20px;
+}
+
+.sosial a{
+    margin-right: 5px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--header-color);
+}
+
+.sosial a:hover{
+    font-weight: 600;
+}
+
+.column >.content{
+    width: 40px;
+    /* border: 1px solid red; */
+}
+
+.fot-content{
+    text-align: right;
+    height: 85px;
+    /* border: 1px solid red; */
+}
