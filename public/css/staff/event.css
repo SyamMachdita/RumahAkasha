@@ -1,0 +1,136 @@
+:root {
+    --main-color: #0009D4; /* Ubah warna sesuai kebutuhan Anda */
+    --color-dark: #1d2231;
+    --text-grey: #8390a2;
+    --green-but: #16a81b;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+    margin-top: 1rem;
+}
+
+.card-single {
+    display: flex;
+    justify-content: space-between;
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.card-single div:last-child span {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.card-single div:first-child {
+    color: var(--text-grey);
+}
+
+.card-single:last-child {
+    background: var(--main-color);
+}
+
+.card-single:last-child h1,
+.card-single:last-child div:first-child span,
+.card-single:last-child div:last-child span {
+    color: #FFFFFF;
+}
+
+.recent-grid {
+    margin-top: 3.5rem;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
+.card-header,
+.card-body {
+    padding: 1rem;
+    margin-bottom: 20px; /* Atur jarak antara judul dan tabel */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 10px;
+}
+
+.card-header button,
+.add-btn {
+    background-color: var(--main-color);
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    /* border: 1px solid var(--main-color); */
+    margin-right: 40px;
+}
+
+.add-btn {
+    background-color: var(--green-but);
+    margin-right: 20px;
+    margin-left: 16px;
+}
+
+.Event {
+    margin-bottom: 40px; /* Atur jarak antara "recent event" dan "recent menu" */
+    margin-left: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    max-width: calc(100% - 40px);
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+thead tr {
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+thead td {
+    background-color: var(--color-dark); /* Warna latar belakang header tabel */
+    font-weight: 700;
+    color: #fff; /* Warna teks header tabel */
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #222;
+}
+
+th {
+    background-color: var(--color-dark);
+    color: #fff;
+}
+
+td .status {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.status.green {
+    background: green;
+}
+
+.status.pink {
+    background: deeppink;
+}
+
+.status.orange {
+    background: orangered;
+}

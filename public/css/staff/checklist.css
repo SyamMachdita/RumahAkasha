@@ -1,0 +1,149 @@
+/* viewEvent.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 8px;
+    text-align: center;
+    max-width: 200px; /* Set maximum width for columns */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Style for ID column */
+.id {
+    border-right: 1px solid #ddd;
+    width: 10px;
+}
+
+/* Style for Name column */
+.name {
+    border-right: 1px solid #ddd;
+    width: 30px;
+}
+
+/* Style for Attendance column */
+.attendance {
+    border-left: none;
+    padding: 4px;
+    max-width: 50px;
+    width: 30px; /* Set specific width for attendance column */
+    max-width: 30px; /* Set maximum width for attendance column */
+}
+.attendance input[type="checkbox"] {
+    margin: 0 auto; /* Meletakkan checkbox di tengah horizontal */
+}
+.row {
+    display: flex; /* Menggunakan flexbox */
+    justify-content: center; /* Meletakkan konten di tengah secara horizontal */
+    margin-top: 20px; /* Atur jarak atas */
+}
+
+.column {
+    margin: 0 10px; /* Atur jarak antara kolom */
+}
+
+button {
+    padding: 10px 20px; /* Atur padding tombol */
+    border-radius: 20px; /* Membuat sudut kotak menjadi melengkung */
+    background-color: #70baff; /* Memberikan warna latar belakang */
+    color: #ffffff; /* Warna teks */
+    border: none; /* Menghapus border */
+    cursor: pointer; /* Mengubah kursor menjadi pointer saat diarahkan ke tombol */
+}
+
+button:hover {
+    background-color: #4d5e6e; /* Warna latar belakang saat tombol dihover */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgb(38, 5, 204);
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Jarak bawah dari kotak pencarian */
+  }
+  
+  input[type="text"] {
+    padding: 8px; /* Padding pada input */
+    font-size: 16px; /* Ukuran teks input */
+    border: 1px solid #ccc; /* Garis border input */
+    border-radius: 5px; /* Melengkungkan sudut input */
+    flex: 1; /* Input memenuhi sisa ruang yang tersedia */
+  }
+  
+  button[type="button"] {
+    padding: 8px 15px; /* Padding pada tombol */
+    background-color: #3498db; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none; /* Menghapus border tombol */
+    border-radius: 5px; /* Melengkungkan sudut tombol */
+    margin-left: 5px; /* Jarak kiri dari input */
+    cursor: pointer; /* Mengubah kursor saat diarahkan ke tombol */
+  }
+  
+  button[type="button"]:hover {
+    background-color: #2980b9; /* Warna latar belakang tombol saat dihover */
+  }
+  

@@ -1,0 +1,260 @@
+/* General Reset */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+/* Body Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    color: #222;
+}
+
+/* Main Container */
+.container {
+    padding: 2rem;
+    margin-top: 50px;
+}
+
+/* Slider Styles */
+.slider-wrapper {
+    position: relative;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+@keyframes slide {
+    0% { left: 0; }
+    100% { left: -100%; }
+}
+
+.slider {
+    display: flex;
+    aspect-ratio: 16 / 9;
+    overflow-x: auto;
+    width: 100%;
+    animation: slide 9s linear infinite;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+}
+
+.slider img {
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+}
+
+.slide-item {
+    position: relative;
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+}
+
+#slide-1 {
+    background-image: url('jerapah.jpg');
+}
+
+#slide-2 {
+    background-image: url('kopi1.jpeg');
+}
+
+#slide-3 {
+    background-image: url('kopi2.jpeg');
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: left;
+    font-size: 20px;
+    width: 40%;
+    float: left;
+}
+
+.slider-nav {
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.75;
+    transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+    opacity: 1;
+}
+
+.bottom-text {
+    position: relative;
+    bottom: -1em;
+    font-size: 50px;
+    left: -25%;
+}
+
+.display {
+    font-size: 100px;
+    position: absolute;
+    top: 10%;
+    right: 35%;
+}
+
+/* Section Title Styles */
+.section-title {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    text-transform: capitalize;
+    font-size: 35px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.section-title h2::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background-color: #00875c;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Menu Styles */
+.menus {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.menu-column {
+    width: 31%;
+}
+
+.menu-column h4 {
+    text-transform: capitalize;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.menu-column h4::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: #00875c;
+    bottom: 0;
+}
+
+.single-menu {
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.single-menu .menu-content h5 {
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 500;
+    border-bottom: 1px dashed #222;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.single-menu .menu-content h5 span {
+    color: tomato;
+    float: right;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.single-menu img {
+    border-radius: 50%;
+    max-width: 110px;
+    border: 1px dashed #ddd;
+    padding: 3px;
+    margin-right: 15px;
+}
+
+
+.main{
+    /* border: 1px solid red; */
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+
+
+/* Responsive Styles */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .main {
+        width: 970px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .main {
+        width: 750px;
+    }
+    .single-menu {
+        flex-direction: column;
+    }
+    .single-menu img {
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main {
+        width: 400px;
+    }
+    .menu-column {
+        width: 100%;
+        margin-bottom: 60px;
+    }
+    .single-menu {
+        flex-direction: column;
+    }
+    .single-menu img {
+        margin-bottom: 25px;
+    }
+}

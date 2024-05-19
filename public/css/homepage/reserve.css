@@ -1,0 +1,169 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: 'Montserrat';
+}
+
+/* body */
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Root */
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+
+
+#background-reserve {
+    background-image: linear-gradient(to top, rgb(255, 255, 255), rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0)), url('kopi.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+section.up-reserve {
+    height: 730px;
+    margin: 0;
+    padding: 0;
+    border: 0.1px solid #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+section {
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.display-1.text-bold {
+    font-weight: bold;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(248, 249, 250, 0.5);
+}
+
+.container-xxl {
+    text-align: center;
+}
+
+/* Reservation Form Styles */
+#reservation-form {
+    background-color: rgb(248, 249, 250);
+    padding: 50px 0;
+}
+
+.form-check-label {
+    font-weight: 500;
+}
+
+.form-check-input {
+    margin-top: 6px;
+    margin-right: 10px;
+}
+
+.form-check-inline {
+    margin-right: 20px;
+}
+
+#menuSelection {
+    margin-top: 20px;
+}
+
+.menu-card {
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+}
+
+.menu-card img {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    margin-bottom: 10px;
+}
+
+.menu-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.menu-card-price {
+    color: #007bff;
+}
+
+.menu-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Remove default form border */
+#reservation-form form {
+    border: none;
+}
+
+/* Additional Styles */
+#totalAmount {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    display: none;
+}
+
+.menu-segment {
+    margin-bottom: 30px;
+}
+
+.menu-segment h6 {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.menu-card .quantity-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.menu-card .quantity-control .btn {
+    margin: 0 5px;
+}
+
+.menu-card .menu-quantity {
+    width: 50px;
+    text-align: center;
+}
+
+.menu-bookmarks {
+    margin-bottom: 20px;
+}
+
+.menu-bookmarks .btn {
+    margin: 5px;
+}
+

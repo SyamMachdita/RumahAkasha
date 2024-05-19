@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: 'Montserrat';
+}
+
+/* body */
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Root */
+body{
+    margin-top: 80px;
+}
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+/* Section */
+
+section.up-event{
+    height: 680px;
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    /* border: 0.1px solid red; */
+    box-shadow: var(--box-shadow);
+}
+
+section{
+    /* border: 1px solid red; */
+    margin-top: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    /* border: 1px solid red; */
+}
+
+
+
+/* Event Up */
+
+
+#background-event {
+    background-image: url('/img/6.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 40px;
+}
+
+.mask {
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+
+/* Join Us */
+
+.join-us{
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.join-us h1{
+    font-size: 60px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+
+/* Description */
+
+
+.title-event{
+    display: flex;
+
+}
+
+.title-event h1{
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 60px;
+    margin-right: 40px;
+}
+
+.sub-topic h1{
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.event-des{
+    display: flex;
+}
+
+.button-submit{
+    margin-top: 20px;
+    background-color: var(--primary-color);
+    color: var(--header-color);
+    padding: 5px;
+    font-size: 30px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 10px;
+}
+
+.fee h5{
+    font-weight: 700;
+    margin-bottom: 20px;
+}

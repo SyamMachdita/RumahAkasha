@@ -1,6 +1,6 @@
 @extends('master.layout');
 @section('konten')
-<link rel="stylesheet" href="{{asset('css/event.css')}}">
+<link rel="stylesheet" href="{{asset('css/homepage/event.css')}}">
     <section id="background-event" class="up-event">
         <div class="event-up">
             <div class="title">

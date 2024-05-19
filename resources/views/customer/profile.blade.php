@@ -1,5 +1,5 @@
 <title>Profile</title>
-<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/homepage/profile.css">
 @extends('master.layout')
 @section('konten')
     <section>

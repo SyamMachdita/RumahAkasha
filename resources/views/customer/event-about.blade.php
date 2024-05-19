@@ -1,6 +1,6 @@
 @extends('master.layout')
 @section('konten')
-    <link rel="stylesheet" href="{{asset('css/event-about.css')}}">
+    <link rel="stylesheet" href="{{asset('css/homepage/event-about.css')}}">
     <div class="join-us">
         <h1>Join Us</h1>
     </div>

@@ -11,6 +11,10 @@ body::-webkit-scrollbar{
     display: none;
 }
 
+body{
+    margin-top: 30px;
+}
+
 /* Root */
 
 :root{

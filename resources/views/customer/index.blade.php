@@ -2,7 +2,7 @@
 @extends('master.layout');
 @section('konten')
 
-<link rel="stylesheet" href="{{asset('css/home.css')}}">
+<link rel="stylesheet" href="{{asset('css/homepage/home.css')}}">
 
     <section>
         <div class="home">
