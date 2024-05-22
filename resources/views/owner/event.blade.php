@@ -21,63 +21,39 @@
                             <th>Image</th>
                             <th>Description</th>
                             <th>Fee</th>
-                            <th>Rundown</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($events as $event)
                         <tr>
-                            <td>Night Party</td>
-                            <td>May 10, 2024</td>
-                            <td>10:00 - 12:00</td>
-                            <td><img src="img/2.jpeg" width="60px" height="60px" alt="Event Image 1"></td>
-                            <td>Description of Event 1</td>
-                            <td>$20</td>
-                            <td>Rundown of Event 1</td>
+                            <td>{{$event->title}}</td>
+                            <td>{{$event->date}}</td>
+                            <td>{{$event->time}}</td>
+                            <td><img src="{{asset(str_replace('../public/', '', $event->image)) }}" width="60px" height="60px" alt="Event Image"></td>
+                            <td>{{$event->description}}</td>
+                            <td>Rp {{$event->fee}}</td>
                             <td>
-                                <span class="status green"></span>
-                                Approved
+                                <span class="status
+                                    @if ($event->status == 'Approved') green
+                                    @elseif ($event->status == 'Pending') orange
+                                    @elseif ($event->status == 'In progress') pink
+                                    @else ''
+                                    @endif">
+                                </span>
+                                {{$event->status}}
                             </td>
                             <td>
-                                <a href="/owner/edit-event" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
-                                <button class="action-btn" title="Delete"><span class="las la-trash-alt"></span></button>
+                                <form action="{{ route('destroy', $event->id) }}" method="POST">
+                                    <a href="/api/edit-event/{{$event->id}}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="action-btn" title="Delete"><span class="las la-trash-alt" onclick="confirmDelete('{{$event->id}}', '{{$event->title}}')"></span></button>
+                                </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Event Title 2</td>
-                            <td>May 15, 2024</td>
-                            <td>14:00</td>
-                            <td><img src="event-image2.jpg" alt="Event Image 2"></td>
-                            <td>Description of Event 1</td>
-                            <td>Rp.30.000</td>
-                            <td>Rundown of Event 1</td>
-                            <td>
-                                <span class="status pink"></span>
-                                In progress
-                            </td>
-                            <td>
-                                <a href="editEvent.html" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
-                                <button class="action-btn" title="Delete"><span class="las la-trash-alt"></span></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Event Title 3</td>
-                            <td>May 15, 2024</td>
-                            <td>16:00</td>
-                            <td><img src="event-image2.jpg" alt="Event Image 2"></td>
-                            <td>Description of Event 1</td>
-                            <td>Rp.20.000</td>
-                            <td>Rundown of Event 1</td>
-                            <td>
-                                <span class="status orange"></span>
-                                Pending
-                            </td>
-                            <td>
-                                <a href="editEvent.html" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
-                                <button class="action-btn" title="Delete"><span class="las la-trash-alt"></span></button>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -85,4 +61,12 @@
     </div>
 </div>
 
+
+<script>
+    function confirmDelete(eventID, eventName) {
+        if(confirm("Yakin hapus event: " + eventName + "?")){
+            document.getElementById('delete-form-'+ eventID).submit();
+        }
+    }
+</script>
 @endsection

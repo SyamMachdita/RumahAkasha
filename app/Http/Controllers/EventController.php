@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Event;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -49,19 +50,36 @@ class EventController extends Controller
         ]);
 
         // return $response->getBody()->getContents();
-        return redirect()->route('events.index');
+        return redirect()->route(Auth::user()->role . '.event');
     }
 
     public function get()
     {
         $events = Event::all();
-        return view('staff.event', compact('events'));
+
+        // Mendapatkan peran pengguna yang saat ini login
+        $userRole = Auth::user()->role;
+
+        // Mengarahkan pengguna ke tampilan yang sesuai dengan peran mereka
+        if ($userRole === 'staff') {
+            return view('staff.event', compact('events'));
+        } elseif ($userRole === 'owner') {
+            return view('owner.event', compact('events'));
+        }
     }
 
     public function edit($id)
     {
         $event = Event::findOrFail($id);
-        return view('staff.edit-event', compact('event'));
+        $userRole = Auth::user()->role;
+
+        if ($userRole === 'staff') {
+            return view('staff.edit-event', compact('event'));
+        } elseif ($userRole === 'owner') {
+            return view('owner.editEvent', compact('event'));
+        } else {
+            abort(403, 'Unauthorized action.');
+        }
     }
 
     public function update(Request $request, $id)
@@ -98,7 +116,7 @@ class EventController extends Controller
 
         $event->save();
 
-        return redirect()->route('events.index');
+        return redirect()->route(Auth::user()->role . '.event');
     }
 
     public function destroy($id)
@@ -107,7 +125,7 @@ class EventController extends Controller
         $event->delete();
 
         // return response()->json(['message' => 'Event deleted successfully']);
-        return redirect()->route('events.index');
+        return redirect()->route(Auth::user()->role . '.event');
     }
 
 }

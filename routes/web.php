@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SesiController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\baristaController;
 
@@ -18,6 +19,17 @@ use App\Http\Controllers\baristaController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// User Auth
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login',[SesiController::class, 'index'])->name('login');
+    Route::post('/login',[SesiController::class, 'login']);
+    Route::get('/register',[SesiController::class, 'register']);
+    Route::post('/create',[SesiController::class, 'create'])->name('create');
+});
+
+Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 
 
 // Customer
@@ -43,8 +55,10 @@ Route::prefix('')->group(function () {
 });
 
 
+// ->middleware(['auth', 'userAkses:customer,staff,owner'])
+
 //STAFF
-Route::prefix('staff')->group(function () {
+Route::prefix('staff')->middleware(['auth', 'userAkses:staff'])->group(function () {
     // Dashboard
     Route::get('/dashboard', function(){
         return view('staff.dashboard');
@@ -52,7 +66,7 @@ Route::prefix('staff')->group(function () {
 
     // Event
     // w/ data
-    Route::get('/event', [EventController::class, 'get'])->name('events.index');
+    Route::get('/event', [EventController::class, 'get'])->name('staff.event');
 
     Route::get('/create-event', function(){
         return view('staff.create-event');
@@ -69,13 +83,11 @@ Route::prefix('staff')->group(function () {
         return view('staff.reservasi');
     });
 
-
-
 });
 
 
 // OWNER
-Route::prefix('owner')->group(function(){
+Route::prefix('owner')->middleware(['auth', 'userAkses:owner'])->group(function (){
 
     // Dashboard
     Route::get('/dashboard',function(){
@@ -89,9 +101,7 @@ Route::prefix('owner')->group(function(){
 
 
     // Event
-    Route::get('/event', function(){
-        return view('owner.event');
-    });
+    Route::get('/event', [EventController::class, 'get'])->name('owner.event');
 
     Route::get('/create-event', function(){
         return view('owner.formEvent');
@@ -99,7 +109,7 @@ Route::prefix('owner')->group(function(){
 
     Route::get('/edit-event', function(){
         return view('owner.editEvent');
-    });
+    })->name('owner.edit-event');
 
 
     // Menu

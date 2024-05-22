@@ -37,10 +37,12 @@
             Dashboard
         </h2>
         <div class="user-wrapper">
-            <img src="img/2.jpeg" width="40px" height="40px" alt="">
+            {{-- <img src="img/2.jpeg" width="40px" height="40px" alt=""> --}}
             <div>
-                <h4>Lavender</h4>
-                <small>Staff</small>
+                <h4>{{ Auth::user()->name }}</h4>
+                <small>
+                    <a href="/logout">Log Out</a>
+                </small>
             </div>
         </div>
     </header>

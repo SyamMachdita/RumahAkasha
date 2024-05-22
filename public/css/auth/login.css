@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: var(--primary-color); /* Optional: Set a background color */
+    overflow: hidden; /* Hide the scrollbar */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: var(--box-shadow);
+    z-index: 5;
+    position: relative; /* Added to allow absolute positioning of the close button */
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-login label {
+    font-weight: bold;
+}
+
+.form-login input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-login {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-login:hover {
+    background-color: #0056b3;
+}
+
+.no-account {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-close {
+    position: absolute; /* Make the button position absolute */
+    top: 20px; /* Adjust the top position */
+    right: 22px; /* Adjust the right position */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #000;
+}
+
+.btn-close:hover {
+    background-color: #999;
+}
+
+.header {
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-weight: bold;
+}
+
+.form-login {
+    width: 300px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center elements */
+}
+
+.form-login label {
+    font-weight: bold;
+}
+
+.form-login input {
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.form-login a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.form-login a:hover {
+    font-weight: 700;
+}
+
+.button-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 40px;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.button-login h3 {
+    margin: 0;
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+.no-account h5 {
+    font-size: 15px;
+}
+
+.no-account a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.no-account a:hover {
+    font-weight: 600;
+}

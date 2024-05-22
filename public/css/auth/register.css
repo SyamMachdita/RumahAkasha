@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: 'Montserrat';
+}
+
+/* body */
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+/* Root */
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+/* Card */
+
+.card{
+    width: 450px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 20px !important; 
+    border: 2px solid var(--secondary-color) !important;
+    box-shadow: var(--box-shadow);
+}
+
+.header{
+    /* border: 1px solid red;     */
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1{
+    font-weight: bold;
+}
+
+.form-login{
+    /* border: 1px solid blue; */
+    width: 300px;
+    margin-bottom: 50px;
+}
+
+.form-login label{
+    font-weight: bold;
+}
+
+.form-login input{
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.form-login a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.form-login a:hover{
+    font-weight: 700;
+}
+
+.button-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 250px;
+    height: 40px;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.button-login h3 {
+    margin: 0;
+    color: var(--header-color);
+    font-weight: bold;
+}
+
+.no-account h5{
+    font-size: 15px;
+}
+
+.no-account a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.no-account a:hover{
+    font-weight: 600;
+}

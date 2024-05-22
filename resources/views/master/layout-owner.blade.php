@@ -53,9 +53,12 @@
             </h2>
 
             <div class="user-wrapper">
-                <img src="img/2.jpeg" width="40px" height="40px" alt="">
+
                 <div>
-                    <h4>Owner</h4>
+                    <h4>{{ Auth::user()->name }}</h4>
+                <small>
+                    <a href="/logout">Log Out</a>
+                </small>
                 </div>
             </div>
         </header>
@@ -66,7 +69,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const currentPath = window.location.pathname;
-            const menuItems = document.querySelectorAll('.sidebar-menu li');
+            const menuItems = document.querySelectorAll('.sidebar-menu > ul > li');
 
             menuItems.forEach(item => {
                 const link = item.querySelector('a');
@@ -81,8 +84,9 @@
             const submenuItems = document.querySelectorAll('.submenu li a');
             submenuItems.forEach(subItem => {
                 if (subItem.getAttribute('href') === currentPath) {
-                    subItem.parentElement.classList.add('active');
+                    subItem.classList.add('active'); // Tambahkan kelas 'active' pada submenu yang aktif
                     subItem.closest('.submenu').classList.add('show');
+                    subItem.closest('li').classList.add('active');
                 }
             });
         });

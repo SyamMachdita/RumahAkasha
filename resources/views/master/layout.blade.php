@@ -21,6 +21,26 @@
                     <li><a href="/event">Event</a></li>
                     <li><a href="/menu">Menu</a></li>
                     <li><a href="/reservasi">Reserve</a></li>
+                    <li class="profile">
+                        <a href="" class="drop-menu">
+                            @if (Auth::check() && Auth::user()->role == 'customer')
+                                {{ Auth::user()->name }}
+                            @else
+                                Join Us
+                            @endif
+                        </a>
+                        <ul class= "dropdown">
+                            @if (!Auth::check())
+                                <li><a href="/login">Login</a></li>
+                            @endif
+
+                            @if (Auth::check() && Auth::user()->role == 'customer')
+                                <li><a href="#">Invoice</a></li>
+                                <li><a href="/logout">Log Out</a></li>
+                            @endif
+
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,5 +91,6 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>

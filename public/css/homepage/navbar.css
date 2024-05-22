@@ -1,5 +1,16 @@
-.navbar.bg-body-tertiary{
-    position:fixed !important;
+
+:root{
+    --primary-color: #03045E;
+    --secondary-color: #023E8A;
+    --thrid-color: #CAF0F8;
+    --header-color: #FFFF;
+    --font-color: black;
+    --box-shadow: 0 2px 4px var(--primary-color);
+}
+
+/* Existing styles */
+.navbar.bg-body-tertiary {
+    position: fixed !important;
     background-color: var(--primary-color) !important;
     border-bottom: #f2f2f2;
     box-shadow: 0 5px 10px var(--secondary-color) !important;
@@ -8,28 +19,26 @@
     z-index: 2;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-weight: bold;
     margin-left: 50px;
 }
 
-.navbar-brand a{
+.navbar-brand a {
     text-decoration: none;
     color: var(--header-color) !important;
 }
 
-.navbar-brand a:hover{
+.navbar-brand a:hover {
     font-weight: bolder;
 }
 
-.container-fluid{
+.container-fluid {
     margin: none;
     padding: 0 !important;
 }
 
 .menu {
-    /* border: 1px solid blue; */
-    display: flex;
     justify-content: center;
     margin-right: 50px;
     padding-right: 0px;
@@ -37,14 +46,16 @@
 
 .menu ul {
     list-style-type: none;
+    display: flex;
     margin: 0;
     padding: 0;
 }
 
 .menu li {
     font-weight: 500;
-    display: inline;
+    display: inline-block;
     margin: 0 10px;
+    position: relative; /* Add this */
 }
 
 .menu a {
@@ -53,9 +64,81 @@
     text-decoration: none;
 }
 
-/* Footer */
+.menu a:hover {
+    font-weight: 700;
+}
 
-footer{
+/* Dropdown menu */
+ul li ul.dropdown {
+    position: absolute;
+    top: 100%; /* Add this */
+    /* left: 0; Add this */
+    background: none;
+    width: 200px; /* Change as needed */
+    display: none; /* Hide by default */
+    list-style: none;
+    /* padding: 0; */
+    /* padding-top: 10px; */
+    padding: none;
+    margin: 0;
+    width: 120px;
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+}
+
+ul li ul.dropdown li {
+    display: block; /* Display block to take full width */
+    /* margin-bottom: 5px; */
+    margin: none;
+    padding: none;
+}
+
+ul li ul.dropdown li a {
+    display: block; /* Add this */
+    padding: 10px;
+    margin: none;
+    color: var(--header-color);
+    text-decoration: none; /* Add this */
+    background: var(--primary-color);
+}
+
+ul li ul.dropdown li a:hover {
+    /* background: var(--primary-color); Change as needed */
+    color: white;
+    font-weight: bold;
+}
+
+/* Show the dropdown on hover */
+.menu li:hover > ul.dropdown {
+    display: block;
+}
+
+li.profile {
+    width: 120px;
+    background-color: black;
+    display: flex; /* Add this */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+li.profile a {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white; /* Add this to make the text visible on black background */
+}
+
+li.profile ul{
+    background: none;
+}
+
+.profile li{
+    color: red;
+    background-color: red;
+}
+
+
+/* Footer styles */
+footer {
     margin-top: 50px;
     width: 100%;
     background-color: var(--primary-color);
@@ -68,7 +151,6 @@ footer{
     margin-left: 50px;
     margin-right: 50px;
     align-items: center;
-
 }
 
 .column {
@@ -87,14 +169,13 @@ footer{
 
 .column.right-align {
     text-align: right;
-    /* margin-right: 0; */
 }
 
 .logo img {
     max-height: 100px;
 }
 
-.column h4{
+.column h4 {
     text-align: right;
     color: var(--header-color);
     font-size: 18px;
@@ -102,7 +183,7 @@ footer{
     font-weight: bold;
 }
 
-.alamat p{
+.alamat p {
     color: var(--header-color);
     font-size: 14px;
 }
@@ -114,11 +195,11 @@ footer{
     margin: 5px 0;
 }
 
-.sosial img{
+.sosial img {
     width: 20px;
 }
 
-.sosial a{
+.sosial a {
     margin-right: 5px;
     text-decoration: none;
     align-items: center;
@@ -126,17 +207,16 @@ footer{
     color: var(--header-color);
 }
 
-.sosial a:hover{
+.sosial a:hover {
     font-weight: 600;
 }
 
-.column >.content{
+.column > .content {
     width: 40px;
     border: 1px solid red;
 }
 
-.fot-content{
+.fot-content {
     text-align: right;
     height: 85px;
-    /* border: 1px solid red; */
 }

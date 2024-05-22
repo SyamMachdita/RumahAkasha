@@ -58,7 +58,7 @@
 
         <div class="row">
           <div class="column">
-            <button type="button" onclick="window.location.href='/staff-dashboard'">Back</button>
+            <button type="button" onclick="window.location.href='/owner/event'">Back</button>
           </div>
           <div class="column">
             <button type="submit">Submit</button>
