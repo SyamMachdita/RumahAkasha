@@ -45,7 +45,7 @@
                                 {{$event->status}}
                             </td>
                             <td>
-                                <form action="{{ route('destroy', $event->id) }}" method="POST">
+                                <form action="{{ route('destroy.event', $event->id) }}" method="POST">
                                     <a href="/api/edit-event/{{$event->id}}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
                                     @csrf
                                     @method('DELETE')

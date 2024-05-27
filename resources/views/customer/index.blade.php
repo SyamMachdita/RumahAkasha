@@ -14,9 +14,9 @@
                 <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt cumque similique quasi commodi voluptas beatae. Totam ad officia placeat qui quidem reiciendis corrupti Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci repellendus tempora impedit consequatur? Impedit culpa ipsa tenetur eaque reprehenderit vel, ratione suscipit et saepe illo porro quasi, repudiandae, dolore vitae.</h3>
                 <div class="container">
                     <div class="wrapper">
-                        <img src="/img/3.png">
-                        <img src="/img/6.png">
-                        <img src="/img/pokeball.png">
+                        <img src="/img/akasha/img1.jpg">
+                        <img src="/img/akasha/img3.jpg">
+                        <img src="/img/akasha/img1.jpg">
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
 
             <div class="profile-content">
                 <div class="profile-img">
-                    <img src="/img/3.png" alt="">
+                    <img src="/img/akasha/img3.jpg" alt="">
                 </div>
 
                 <div class="description">

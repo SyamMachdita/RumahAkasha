@@ -29,59 +29,6 @@ section{
     margin-left: 50px;
 }
 
-/* Navbar */
-.navbar.bg-body-tertiary{
-    position:sticky !important;
-    background-color: var(--primary-color) !important;
-    border-bottom: #f2f2f2;
-    box-shadow: 0 5px 10px var(--secondary-color) !important;
-    z-index: 2;
-}
-
-.navbar-brand{
-    font-weight: bold;
-    margin-left: 50px;
-}
-
-.navbar-brand a{
-    text-decoration: none;
-    color: var(--header-color) !important;
-}
-
-.navbar-brand a:hover{
-    font-weight: bolder;
-}
-
-.container-fluid{
-    margin: none;
-    padding: 0 !important;
-}
-
-.menu {
-    /* border: 1px solid blue; */
-    display: flex;
-    justify-content: center;
-    margin-right: 50px;
-    padding-right: 0px;
-}
-
-.menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu li {
-    font-weight: 500;
-    display: inline;
-    margin: 0 10px;
-}
-
-.menu a {
-    font-weight: 600;
-    color: var(--header-color);
-    text-decoration: none;
-}
 
 
 /* Cerita Kami */
@@ -124,6 +71,8 @@ section{
 
 h1.header.our-barista{
     text-align: center;
+    text-shadow: 3px 3px var(--thrid-color);
+    font-size: 80px;
 }
 
 .grid-container {
@@ -156,91 +105,24 @@ h1.header.our-barista{
     text-align: justify;
 }
 
-
-/* Footer */
-
-footer{
-    margin-top: 50px;
-    width: 100%;
-    background-color: var(--primary-color);
+.barista{
+    text-align: center;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
-    align-items: center;
-
-}
-
-.column {
-    width: 190px;
-    flex: 1;
-    margin-right: 40px;
-}
-
-.column:last-child {
-    margin-right: 0;
-}
-
-.column.left-align {
-    text-align: left;
-}
-
-.column.right-align {
-    text-align: right;
-    /* margin-right: 0; */
-}
-
-.logo img {
-    max-height: 100px;
-}
-
-.column h4{
-    text-align: right;
-    color: var(--header-color);
-    font-size: 18px;
-    margin-bottom: 10px;
+.barista h1{
     font-weight: bold;
 }
 
-.alamat p{
-    color: var(--header-color);
-    font-size: 14px;
-}
 
-.contact p,
-.sosial p {
-    font-size: 14px;
-    color: var(--header-color);
-    margin: 5px 0;
-}
 
-.sosial img{
-    width: 20px;
-}
-
-.sosial a{
-    margin-right: 5px;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    color: var(--header-color);
-}
-
-.sosial a:hover{
+.jobdesk h1{
     font-weight: 600;
 }
 
-.column >.content{
-    width: 40px;
-    /* border: 1px solid red; */
+.deskripsi h1{
+    font-weight: 500;
 }
 
-.fot-content{
-    text-align: right;
-    height: 85px;
-    /* border: 1px solid red; */
+.tahun_kerja h1{
+    font-weight: bold;
 }

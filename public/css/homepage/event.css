@@ -49,7 +49,7 @@ section{
 
 #background-event {
     background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0)),
-    url('/img/6.png');
+    url('/img/akasha/img3.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -82,18 +82,26 @@ background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 2
 
 
 .title{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .title h1{
     font-size: 100px;
     font-weight: bold;
+    text-shadow: 2px 2px var(--primary-color);
+}
+
+.title h2{
+    font-size: 150px;
+    font-weight: bold;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px var(--header-color);
 }
 
 .sub-topic h5 {
     /* border: 1px solid red; */
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 800;
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -102,22 +110,26 @@ background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 2
 }
 
 .date{
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .date h2{
     margin-top: 20px;
     font-size: 70px;
+    /* font-size: 100px; */
+    font-weight: bold;
+    color: var(--header-color);
+    text-shadow: 2px 2px var(--primary-color);
 }
 
 .button-description {
-    color: var(--header-color);
+    /* color: var(--header-color); */
     font-weight: bold;
     border-radius: 50px;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: var(--thrid-color);
+    background-color: var(--secondary-color);
     /* border: 1px none; */
     box-shadow: var(--box-shadow);
     margin-top: 50px;
@@ -128,7 +140,7 @@ background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 2
 }
 
 .button-description h5 {
-    color: var(--secondary-color);
+    color: var(--header-color);
     margin: 0;
     font-size: 50px;
     font-weight: 700;

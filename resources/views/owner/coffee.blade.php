@@ -19,26 +19,31 @@
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Price</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Americano</td>
-                                <td><img src="img/americano.jpeg" width="60px" height="60px" alt="Americano"></td>
-                                <td>Rp.20.000</td>
-                                <td>
-                                    <a href="/owner/edit-coffee" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
-                                    <button class="action-btn" title="Delete"><span class="las la-trash-alt"></span></button>
-                                </td>
-                            </tr>
-
+                            @foreach ($menu as $item)
+                                <tr>
+                                    <td>{{ $item->name }}</td>
+                                    <td><img src="{{ asset(str_replace('../public', '', $item->image)) }}" width="60px" height="60px" alt="Menu Image"></td>
+                                    <td>Rp {{ $item->price }}</td>
+                                    <td>{{ $item->description }}</td>
+                                    <td>
+                                        <form action="{{ route('destroy.coffee', $item->id_menu) }}" method="POST">
+                                            <a href="{{ route('edit.coffee', $item->id_menu) }}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="action-btn" title="Delete" onclick="confirmDelete('{{ $item->id_menu }}', '{{ $item->name }}')"><span class="las la-trash-alt"></span></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
-
     </div>
 @endsection

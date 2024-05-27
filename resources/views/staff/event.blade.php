@@ -29,7 +29,7 @@
                                 <td>{{$event->title}}</td>
                                 <td>{{$event->date}}</td>
                                 <td>{{$event->time}}</td>
-                                <td><img src="{{asset(str_replace('../public/', '', $event->image)) }}" width="60px" height="60px" alt="Event Image"></td>
+                                <td><img src="{{ asset(str_replace('../public/', '', $event->image)) }}" width="60px" height="60px" alt="Event Image"></td>
                                 <td>{{$event->description}}</td>
                                 <td>Rp {{$event->fee}}</td>
                                 <td>
@@ -43,9 +43,9 @@
                                     {{$event->status}}
                                 </td>
                                 <td>
-                                    <form action="{{ route('destroy', $event->id) }}" method="POST">
+                                    <form action="{{ route('destroy.event', $event->id) }}" method="POST">
                                         <a href="/api/edit-event/{{$event->id}}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
-                                        <a href="checklist-event" class="action-btn" title="Edit"><span class="las la-tasks"></span></a>
+                                        <a href="{{ route('staff.event.participants', $event->id) }}" class="action-btn" title="Checklist"><span class="las la-tasks"></span></a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="action-btn" title="Delete"><span class="las la-trash-alt" onclick="confirmDelete('{{$event->id}}', '{{$event->title}}')"></span></button>

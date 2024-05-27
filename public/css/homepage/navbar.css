@@ -16,7 +16,7 @@
     box-shadow: 0 5px 10px var(--secondary-color) !important;
     width: 100%;
     top: 0%;
-    z-index: 2;
+    z-index: 999;
 }
 
 .navbar-brand {

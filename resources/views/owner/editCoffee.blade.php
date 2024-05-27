@@ -9,28 +9,34 @@
 <body>
     <section class="container">
         <header>Edit Coffee</header>
-        <form action="#" class="form">
+        <form action="{{ route('update.coffee', ['id_menu' => $menu->id_menu]) }}" method="POST" enctype="multipart/form-data" class="form">
+            @csrf
+            @method('PUT')
+            <input type="hidden" name="id" value="{{$menu->id_menu}}">
             <div class="input-box">
-                <label>Name</label>
-                <input type="text" required />
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="{{$menu->name}}" required>
             </div>
-
             <div class="input-box">
-                <label>Image</label>
-                <input type="file" accept="image/*" required />
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" value="{{$menu->image}}">
             </div>
-
             <div class="input-box">
-                <label>Description</label>
-                <input type="text" required />
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" value="{{$menu->price}}" required>
             </div>
-
             <div class="input-box">
-                <label>Price</label>
-                <input type="number" required />
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" value="{{$menu->description}}" required>
             </div>
-
-            <button>Submit</button>
+            <div class="row">
+                <div class="column">
+                    <button type="button" onclick="history.back()">Back</button>
+                </div>
+                <div class="column">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
         </form>
     </section>
 </body>

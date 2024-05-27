@@ -6,7 +6,7 @@
         <h1 class="header">Cerita Kita</h1>
         <div class="cerita">
             <div class="cerita-img">
-                <img src="/img/pokeball.png" alt="">
+                <img src="/img/akasha/img3.jpg" alt="">
             </div>
             <div class="cerita-content">
                 <h4>
@@ -28,87 +28,35 @@
             </div>
 
             <div class="cerita-img">
-                <img src="/img/pokeball.png" alt="">
+                <img src="/img/akasha/img1.jpg" alt="">
             </div>
         </div>
     </section>
 
     <section>
-        <h1 class="header our-barista">Our Barista</h1>
+        <h1 class="header our-barista">Our Family</h1>
         <div class="grid-container">
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
+            @foreach ($barista as $baristas)
+                <div class="card">
+                    <img src="{{ asset(str_replace('../public', '', $baristas->foto_barista)) }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div class="barista">
+                                <h1>{{$baristas->nama_barista}}</h1>
+                            </div>
+                            <div class="jobdesk">
+                                <h1>{{$baristas->job_desk}}</h1>
+                            </div>
+                            <div class="deskripsi">
+                                <h1>{{$baristas->deskripsi}}</h1>
+                            </div>
+                            <div class="tahun_kerja">
+                                <h1>{{$baristas->tahun_kerja}}</h1>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text"><ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul></p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </section>
 @endsection

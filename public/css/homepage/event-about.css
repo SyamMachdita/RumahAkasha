@@ -27,13 +27,14 @@ body{
 
 /* Section */
 
-section.up-event{
+.up-event{
     height: 680px;
     margin: 0;
     margin-top: 0;
     padding: 0;
     /* border: 0.1px solid red; */
     box-shadow: var(--box-shadow);
+    overflow: hidden;
 }
 
 section{
@@ -50,13 +51,27 @@ section{
 /* Event Up */
 
 
-#background-event {
-    background-image: url('/img/6.png');
+/* #background-event {
     background-size: cover;
     background-position: center;
     position: relative;
     margin-left: 50px;
     margin-right: 50px;
+    border-radius: 40px;
+} */
+
+.event_image{
+    position: relative;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.event_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 40px;
 }
 

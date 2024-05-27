@@ -1,13 +1,13 @@
-/* General Reset */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Poppins&display=swap');
 
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --primary-color: #03045E;
     --secondary-color: #023E8A;
     --thrid-color: #CAF0F8;
@@ -28,6 +28,7 @@ body {
 .container {
     padding: 2rem;
     margin-top: 50px;
+    width: 100%;
 }
 
 /* Slider Styles */
@@ -133,6 +134,7 @@ body {
     text-align: center;
     margin-top: 80px;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 .section-title h2 {
@@ -156,14 +158,26 @@ body {
 }
 
 /* Menu Styles */
+.menu-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .menus {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+    margin: 50px;
+    padding: 0 20px;
 }
 
 .menu-column {
-    width: 31%;
+    flex-grow: 1;
+    flex-basis: 30%;
+    margin: 0 10px;
+    padding: 10px;
 }
 
 .menu-column h4 {
@@ -185,9 +199,7 @@ body {
 }
 
 .single-menu {
-    display: flex;
-    align-items: center;
-    margin-top: 35px;
+    margin-bottom: 20px;
 }
 
 .single-menu .menu-content h5 {
@@ -214,15 +226,10 @@ body {
     margin-right: 15px;
 }
 
-
-.main{
-    /* border: 1px solid red; */
+.main {
     margin-left: 50px;
     margin-right: 50px;
-
 }
-
-
 
 /* Responsive Styles */
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
