@@ -9,38 +9,22 @@
 <body>
     <section class="container">
         <header>Edit Non Coffee</header>
-        <form action="{{ route('update.noncoffee', ['id_menu'=> $menu->id_menu])}}" method="POST" enctype="multipart/form-data" class="form">
-            @csrf
-            @method('PUT')
-            <input type="hidden" name="id" value="{{$menu->id_menu}}">
+        <form action="#" class="form">
             <div class="input-box">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" value="{{$menu->name}}" required />
+                <label>Name</label>
+                <input type="text" placeholder="Enter signature drink name" required />
             </div>
 
             <div class="input-box">
-                <label for="image">Image:</label>
-                <input type="file" id="image" name="image" accept="image/*" value="{{$menu->image}}"/>
-            </div>
-
-            <div class= "input-box">
-                <label for="price">Price</label>
-                <input type="number" id="price" name="price" value="{{$menu->price}}" required />
+                <label>Image</label>
+                <input type="file" accept="image/*" required />
             </div>
 
             <div class="input-box">
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description" value="{{$menu->description}}" required />
+                <label>Price</label>
+                <input type="number" placeholder="Enter signature drink price" required />
             </div>
-
-            <div class="row">
-                <div class="column">
-                    <button type="button" onclick="history.back()">Back</button>
-                </div>
-                <div class="column">
-                    <button type="submit">Submit</button>
-                </div>
-            </div>
+            <button>Submit</button>
         </form>
     </section>
 </body>

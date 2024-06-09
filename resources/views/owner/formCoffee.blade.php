@@ -9,37 +9,28 @@
 <body>
     <section class="container">
         <header>Add New Coffee</header>
-        <form action="/owner/api/formCoffee" method="POST" enctype="multipart/form-data" class="form">
-        @csrf
-
+        <form action="#" class="form">
             <div class="input-box">
                 <label>Name</label>
-                <input type="text" name="name" placeholder="Enter coffee name" required>
+                <input type="text" placeholder="Enter coffee name" required />
             </div>
 
             <div class="input-box">
                 <label>Image</label>
-                <input type="file" name="image" accept="image/*" required>
-            </div>
-
-            <div class="input-box">
-                <label>Price</label>
-                <input type="number" name="price" placeholder="Enter coffee price" required>
+                <input type="file" accept="image/*" required />
             </div>
 
             <div class="input-box">
                 <label>Description</label>
-                <input type="text" name="description" placeholder="Enter coffee description" required>
+                <input type="text" placeholder="Enter coffee description" required />
             </div>
 
-            <div class="row">
-                <div class="column">
-                  <button type="button" onclick="history.back()">Back</button>
-                </div>
-                <div class="column">
-                  <button type="submit" onclick="window.location.href='/menu-coffee'">Submit</button>
-                </div>
-              </div>
+            <div class="input-box">
+                <label>Price</label>
+                <input type="number" placeholder="Enter coffee price" required />
+            </div>
+
+            <button>Submit</button>
         </form>
     </section>
 </body>

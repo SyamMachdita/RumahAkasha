@@ -49,7 +49,12 @@ section{
 /* Event Up */
 
 #background-event {
+<<<<<<< HEAD
     background-image:url('/img/akasha/img10.jpeg');
+=======
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0)),
+    url('/img/6.png');
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
     background-size: cover;
     background-position: center;
     position: relative;
@@ -75,16 +80,21 @@ section{
 }
 
 .title{
+<<<<<<< HEAD
     margin-top: 55px;
     justify-content: center;
     align-items: center;
     justify-items: center;
+=======
+    margin-top: 50px;
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 }
 
 .title h1{
     font-size: 120px;
     color: var(--font-white);
     font-weight: bold;
+<<<<<<< HEAD
     /* text-shadow: 2px 2px var(--thrid-color); */
 }
 
@@ -93,12 +103,14 @@ section{
     font-weight: bold;
     color: var(--font-white);
     /* text-shadow: 2px 2px var(--primary-color); */
+=======
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 }
 
 .sub-topic h5 {
     /* border: 1px solid red; */
     font-size: 30px;
-    font-weight: 800;
+    font-weight: 600;
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -107,6 +119,7 @@ section{
 }
 
 .date{
+<<<<<<< HEAD
     margin-top: 10px;
     margin-bottom: 40px;
 }
@@ -118,16 +131,28 @@ section{
     font-weight: bold;
     color: var(--font-white);
     /* text-shadow: 2px 2px var(--primary-color); */
+=======
+    margin-top: 50px;
+}
+
+.date h2{
+    margin-top: 20px;
+    font-size: 70px;
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 }
 
 .button-description {
-    /* color: var(--header-color); */
+    color: var(--header-color);
     font-weight: bold;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
+<<<<<<< HEAD
     background-color: var(--primary-color);
+=======
+    background-color: var(--thrid-color);
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
     /* border: 1px none; */
     border: none;
     box-shadow: var(--box-shadow);
@@ -140,7 +165,11 @@ section{
 }
 
 .button-description h5 {
+<<<<<<< HEAD
     color: var(--font-white);
+=======
+    color: var(--secondary-color);
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
     margin: 0;
     font-size: 30px;
     font-weight: 700;

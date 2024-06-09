@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\menuController;
 use App\Http\Controllers\midtransStatus;
+=======
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\staffDashboard;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\CoffeeController;
 use App\Http\Controllers\baristaController;
+<<<<<<< HEAD
 use App\Http\Controllers\midtransController;
 use App\Http\Controllers\NonCoffeeController;
 use App\Http\Controllers\ReservasiController;
@@ -16,6 +19,8 @@ use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\eventGuestController;
 use App\Http\Controllers\ownerDashboardController;
 use App\Http\Controllers\ReservationInfoController;
+=======
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +54,7 @@ Route::prefix('')->group(function () {
     Route::get('/home', function(){
         return view('customer.index');
     });
+<<<<<<< HEAD
     Route::get('/event', [eventGuestController::class, 'showEvents']);
 
     Route::get('/event-about/{upcomingEvent}', [eventGuestController::class, 'show'])->middleware(['auth', 'userAkses:customer,staff,owner']);
@@ -67,6 +73,28 @@ Route::prefix('')->group(function () {
 });
 
 
+=======
+    Route::get('/event', function(){
+        return view('customer.event');
+    });
+    Route::get('/event-about', function(){
+        return view('customer.event-about');
+    });
+    Route::get('/profile', function(){
+        return view('customer.profile');
+    });
+    Route::get('/reservasi', function(){
+        return view('customer.reserve');
+    });
+    Route::get('/menu', function(){
+        return view('customer.menu');
+    });
+});
+
+
+// ->middleware(['auth', 'userAkses:customer,staff,owner'])
+
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 //STAFF
 Route::prefix('staff')->middleware(['auth', 'userAkses:staff'])->group(function () {
     // Dashboard
@@ -86,9 +114,12 @@ Route::prefix('staff')->middleware(['auth', 'userAkses:staff'])->group(function 
         return view('staff.checklist');
     });
 
+<<<<<<< HEAD
     Route::get('/event/{id}/participants', [EventGuestController::class, 'viewEventParticipants'])->name('staff.event.participants');
     Route::post('/event/update-status', [EventGuestController::class, 'updateStatus'])->name('staff.event.updateStatus');
 
+=======
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
     // Reservation
     Route::get('/reservasi', [ReservationInfoController::class, 'info_staff']);
 
@@ -117,58 +148,41 @@ Route::prefix('owner')->middleware(['auth', 'userAkses:owner'])->group(function 
     })->name('owner.edit-event');
 
 
-    ///// Menu
-    // Coffee
-    Route::get('/menu-coffee',[CoffeeController::class,'get'])->name('coffee.index');
-
-
-    // ADD
+    // Menu
+    Route::get('/menu-coffee', function(){
+        return view('owner.coffee');
+    });
     Route::get('/add-coffee', function(){
         return view('owner.formCoffee');
     });
-    Route::post('/api/formCoffee',[CoffeeController::class,'store'])->name('store.coffee');
-
-    // EDIT
-    Route::get('/edit-coffee', [CoffeeController::class,'get'])->name('coffee.edit');
-    Route::get('/api/editCoffe/{id_menu}',[CoffeeController::class,'edit'])->name('edit.coffee');
-    Route::put('/api/editCoffee/{id_menu}',[CoffeeController::class,'update'])->name('update.coffee');
-    // DELETE
-    Route::delete('/api/delete-coffee/{id_menu}',[CoffeeController::class,'destroy'])->name('destroy.coffee');
+    Route::get('/edit-coffee', function(){
+        return view('owner.editCoffee');
+    });
 
 
-
-
-    //NonCoffee
-    // Get
-    Route::get('/menu-noncoffee', [NonCoffeeController::class, 'get'])->name('noncoffee.index');
-
-    // Add
+    Route::get('/menu-noncoffee', function(){
+        return view('owner.noncoffee');
+    });
     Route::get('/add-noncoffee', function(){
         return view('owner.formNoncoffee');
     });
-    Route::post('/api/formNonCoffee', [NonCoffeeController::class, 'store'])->name('store.noncoffee');
-
-    // Edit
-    Route::get('/api/editNonCoffee/{id_menu}', [NonCoffeeController::class, 'edit'])->name('edit.noncoffee');
-    Route::put('/api/editNonCoffee/{id_menu}', [NonCoffeeController::class, 'update'])->name('update.noncoffee');
-
-    // Delete
-    Route::delete('/api/delete-menu/{id_menu}', [NonCoffeeController::class, 'destroy'])->name('destroy.noncoffee');
+    Route::get('/edit-noncoffee', function(){
+        return view('owner.editNonCoffee');
+    });
 
 
-
-
-    // Signature
-    // Get
-    Route::get('/menu-signature', [SignatureController::class, 'get'])->name('signature.index');
-
-    // Add
+    Route::get('/menu-signature', function(){
+        return view('owner.signature');
+    });
     Route::get('/add-signature', function(){
         return view('owner.formSignature');
     });
-    Route::post('/api/formSignature', [SignatureController::class, 'store'])->name('store.signature');
+    Route::get('/edit-signature', function(){
+        return view('owner.editSignature');
+    });
 
 
+<<<<<<< HEAD
     // Edit
     Route::get('/edit-signature', [SignatureController::class, 'get'])->name('signature.index');
     Route::get('/api/editSignature/{id_menu}', [SignatureController::class, 'edit'])->name('edit.signature');
@@ -201,15 +215,19 @@ Route::prefix('owner')->middleware(['auth', 'userAkses:owner'])->group(function 
     Route::get('/barista', [BaristaController::class, 'get'])->name('baristas.index');
 
     // Add Barista
+=======
+    // Barista
+    Route::get('/barista', function(){
+        return view('owner.barista');
+    });
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
     Route::get('/add-barista', function(){
         return view('owner.formBarista');
     });
-    Route::post('/api/create-barista', [BaristaController::class, 'store'])->name('store.barista');
-
-    // Edit Barista
     Route::get('/edit-barista', function(){
         return view('owner.editBarista');
     });
+<<<<<<< HEAD
     Route::get('/api/edit-barista/{id}', [BaristaController::class, 'edit'])->name('edit.barista');
     Route::put('/api/edit-barista/{id}', [BaristaController::class, 'update'])->name('update.barista');
 
@@ -218,16 +236,18 @@ Route::prefix('owner')->middleware(['auth', 'userAkses:owner'])->group(function 
 
     // Informations
     Route::get('/information',[ownerDashboardController::class,'owner_information']);
+=======
+>>>>>>> parent of c7d7ae7 (registrasi_event_done)
 });
 
 
 
-// Function Owner & Staff | EVENT
+// Function Owner & Staff
 
-Route::post('/api/create-event', [EventController::class, 'store'])->name('store.event');
+Route::post('/api/create-event', [EventController::class, 'store'])->name('store');
 // Edit Event sesuai index
 Route::get('/api/edit-event/{id}', [EventController::class, 'edit'])->name('api-edit-event');
 // Edit Event
-Route::put('/api/edit-event/{id}', [EventController::class, 'update'])->name('update.event');
+Route::put('/api/edit-event/{id}', [EventController::class, 'update'])->name('update');
 // Delete Event
-Route::delete('/api/delete-event/{id}', [EventController::class, 'destroy'])->name('destroy.event');
+Route::delete('/api/delete-event/{id}', [EventController::class, 'destroy'])->name('destroy');

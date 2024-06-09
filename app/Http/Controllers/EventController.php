@@ -55,7 +55,7 @@ class EventController extends Controller
 
     public function get()
     {
-        $events = Event::orderBy('id', 'desc')->get();
+        $events = Event::all();
 
         $userRole = Auth::user()->role;
 
