@@ -57,7 +57,6 @@ class EventController extends Controller
     {
         $events = Event::orderBy('id', 'desc')->get();
 
-        // Mendapatkan peran pengguna yang saat ini login
         $userRole = Auth::user()->role;
 
         // Mengarahkan pengguna ke tampilan yang sesuai dengan peran mereka
@@ -84,48 +83,82 @@ class EventController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'title' => 'required',
-            'date' => 'required|date',
-            'time' => 'required',
-            'description' => 'required',
-            'fee' => 'required|numeric',
-            'status' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
+    $client = new Client();
+    $multipart = [
+        [
+            'name'     => 'title',
+            'contents' => $request->title
+        ],
+        [
+            'name'     => 'date',
+            'contents' => $request->date
+        ],
+        [
+            'name'     => 'time',
+            'contents' => $request->time
+        ],
+        [
+            'name'     => 'description',
+            'contents' => $request->description
+        ],
+        [
+            'name'     => 'fee',
+            'contents' => $request->fee
+        ],
+        [
+            'name'     => 'status',
+            'contents' => $request->status
+        ],
+        [
+            'name'     => 'id',
+            'contents' => $id
+        ]
+    ];
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $multipart[] = [
+            'name'     => 'image',
+            'contents' => fopen($image->getPathname(), 'r'),
+            'filename' => $image->getClientOriginalName()
+        ];
+    }
+
+    try {
+        $response = $client->request('PUT', 'http://localhost:8080/api/edit-event', [
+            'multipart' => $multipart
         ]);
 
-        $event = Event::find($id);
-
-        if (!$event) {
-            return response()->json(['message' => 'Event not found'], 404);
+        if ($response->getStatusCode() == 200) {
+            return redirect()->route(Auth::user()->role . '.event')->with('success', 'Event updated successfully');
+        } else {
+            return redirect()->route(Auth::user()->role . '.event')->with('error', 'Failed to update event');
         }
-
-        $event->title = $request->title;
-        $event->date = $request->date;
-        $event->time = $request->time;
-        $event->description = $request->description;
-        $event->fee = $request->fee;
-        $event->status = $request->status;
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
-            $image->move(public_path('img'), $imageName);
-            $event->image = 'img/event/' . $imageName;
-        }
-
-        $event->save();
-
-        return redirect()->route(Auth::user()->role . '.event');
+    } catch (\Exception $e) {
+        return redirect()->route(Auth::user()->role . '.event')->with('error', 'Failed to update event: ' . $e->getMessage());
     }
+    }
+
 
     public function destroy($id)
     {
-        $event = Event::findOrFail($id);
-        $event->delete();
+        $client = new \GuzzleHttp\Client();
 
-        // return response()->json(['message' => 'Event deleted successfully']);
-        return redirect()->route(Auth::user()->role . '.event');
+        try {
+            $response = $client->request('DELETE', 'http://localhost:8080/api/delete-event', [
+                'query' => ['id' => $id]
+            ]);
+
+            if ($response->getStatusCode() == 200) {
+                return redirect()->route(Auth::user()->role . '.event')->with('success', 'Event deleted successfully');
+            } else {
+                return redirect()->route(Auth::user()->role . '.event')->with('error', 'Failed to delete event');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route(Auth::user()->role . '.event')->with('error', 'Failed to delete event: ' . $e->getMessage());
+        }
     }
+
 
 }

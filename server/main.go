@@ -47,6 +47,14 @@ type MenuItemSignature struct {
 	Kategori    string  `json:"kategori"`
 }
 
+type MenuItemFood struct {
+	Name        string  `json:"name"`
+	Image       string  `json:"image"`
+	Price       float64 `json:"price"`
+	Description string  `json:"description"`
+	Kategori    string  `json:"kategori"`
+}
+
 type Barista struct {
 	ID          int    `json:"id_barista"`
 	Name        string `json:"nama_barista"`
@@ -71,20 +79,13 @@ func main() {
 	http.HandleFunc("/api/edit-event", editEvent)
 	http.HandleFunc("/api/delete-event", delEvent)
 
-	// Owner Coffee
+	// Owner Menu
 	http.HandleFunc("/api/formCoffee", createMenuCoffee)
-	http.HandleFunc("/api/editCoffee", editMenuCoffee)
-	http.HandleFunc("/api/delete-coffee}", delMenuCoffee)
-
-	// Owner NonCoffee
 	http.HandleFunc("/api/formNonCoffee", createMenuNoncoffee)
-	http.HandleFunc("/api/editNoncoffee", editNoncoffee)
-	http.HandleFunc("/api/deleteNoncoffee", delMenu)
-
-	// Owner Signature
 	http.HandleFunc("/api/formSignature", createMenuSignature)
-	http.HandleFunc("/api/editSignature", editMenuSignature)
-	http.HandleFunc("/api/delete-signature", delMenuSignature)
+	http.HandleFunc("/api/formFood", createMenuFood)
+	http.HandleFunc("/api/editMenu", editMenu)
+	http.HandleFunc("/api/delete-menu", delMenu)
 
 	// Owner Barista
 	http.HandleFunc("/api/create-barista", createBarista)
@@ -274,7 +275,7 @@ func createMenuCoffee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Coffee created successfully"})
 }
 
-func editMenuCoffee(w http.ResponseWriter, r *http.Request) {
+func editMenu(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "PUT" {
 		http.Error(w, "Method not allowed !", http.StatusMethodNotAllowed)
 		return
@@ -319,7 +320,7 @@ func editMenuCoffee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Coffee updated successfully"})
 }
 
-func delMenuCoffee(w http.ResponseWriter, r *http.Request) {
+func delMenu(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "DELETE" {
 		http.Error(w, "Method not allowed !", http.StatusMethodNotAllowed)
 		return
@@ -331,7 +332,7 @@ func delMenuCoffee(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	_, err := db.Exec("DELETE FROM menu WHERE id = ?", id)
+	_, err := db.Exec("DELETE FROM menus WHERE id_menu = ?", id)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -398,74 +399,6 @@ func createMenuNoncoffee(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Non-Coffee created successfully"})
 }
 
-func editNoncoffee(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "PUT" {
-		http.Error(w, "Method not allowed !", http.StatusMethodNotAllowed)
-		return
-	}
-
-	var menuNoncoffee MenuItemNoncoffee
-	menuNoncoffee.Name = r.FormValue("name")
-	menuNoncoffee.Price, _ = strconv.ParseFloat(r.FormValue("price"), 64)
-	menuNoncoffee.Description = r.FormValue("description")
-	menuNoncoffee.Kategori = r.FormValue("kategori")
-
-	// Handle image update
-	file, handler, err := r.FormFile("image")
-	if err == nil {
-		defer file.Close()
-		filePath := fmt.Sprintf("../public/img/menu/%s", handler.Filename)
-		out, err := os.Create(filePath)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer out.Close()
-		_, err = io.Copy(out, file)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		menuNoncoffee.Image = filePath
-	}
-	// Update menu in the database
-	_, err = db.Exec("UPDATE menus SET name = ?, image = ?, price = ?, description = ?, kategori = ? WHERE id_menu = ?",
-		menuNoncoffee.Name, menuNoncoffee.Image, menuNoncoffee.Price, menuNoncoffee.Description, menuNoncoffee.Kategori, r.FormValue("id_menu"))
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Send response to client
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Non-Coffee updated successfully"})
-}
-
-func delMenu(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "DELETE" {
-		http.Error(w, "Method not allowed !", http.StatusMethodNotAllowed)
-		return
-	}
-
-	id := r.URL.Query().Get("id")
-	if id == "" {
-		http.Error(w, "Method Noncoffee ID is required", http.StatusBadRequest)
-		return
-	}
-
-	_, err := db.Exec("DELETE FROM menu WHERE id = ?", id)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		return
-	}
-
-	// Send response to client
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Non Coffee deleted successfully"})
-}
-
 // Signature
 func createMenuSignature(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
@@ -519,69 +452,58 @@ func createMenuSignature(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Signature created successfully"})
 }
 
-func editMenuSignature(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "PUT" {
-		http.Error(w, "Method not allowed!", http.StatusMethodNotAllowed)
+// FOOD
+func createMenuFood(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "Method not allowed !", http.StatusMethodNotAllowed)
+		return
+	}
+	err := r.ParseMultipartForm(10 << 20)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	var menuSignature MenuItemSignature
-	menuSignature.Name = r.FormValue("name")
-	menuSignature.Price, _ = strconv.ParseFloat(r.FormValue("price"), 64)
-	menuSignature.Description = r.FormValue("description")
-	menuSignature.Kategori = r.FormValue("kategori")
+	var menuFood MenuItemFood
+	menuFood.Name = r.FormValue("name")
+	menuFood.Price, _ = strconv.ParseFloat(r.FormValue("price"), 64)
+	menuFood.Description = r.FormValue("description")
+	menuFood.Kategori = r.FormValue("kategori")
 
 	file, handler, err := r.FormFile("image")
-	if err == nil {
-		defer file.Close()
-		filePath := fmt.Sprintf("../public/img/menu/%s", handler.Filename)
-		out, err := os.Create(filePath)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		defer out.Close()
-		_, err = io.Copy(out, file)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		menuSignature.Image = filePath
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
+	defer file.Close()
 
-	_, err = db.Exec("UPDATE menus SET name = ?, image = ?, price = ?, description = ?, kategori = ? WHERE id_menu = ?",
-		menuSignature.Name, menuSignature.Image, menuSignature.Price, menuSignature.Description, menuSignature.Kategori, r.FormValue("id_menu"))
+	filePath := fmt.Sprintf("../public/img/menu/%s", handler.Filename)
+	out, err := os.Create(filePath)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, file)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Signature updated successfully"})
-}
+	menuFood.Image = filePath
 
-func delMenuSignature(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "DELETE" {
-		http.Error(w, "Method not allowed!", http.StatusMethodNotAllowed)
-		return
-	}
-
-	id := r.URL.Query().Get("id")
-	if id == "" {
-		http.Error(w, "Menu Signature ID is required", http.StatusBadRequest)
-		return
-	}
-
-	_, err := db.Exec("DELETE FROM menus WHERE id = ?", id)
+	_, err = db.Exec("INSERT INTO menus (name, image, price, description, kategori) VALUES (?, ?, ?, ?, ?)",
+		menuFood.Name, menuFood.Image, menuFood.Price, menuFood.Description, "food")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
+	// Send response to client
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Signature deleted successfully"})
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(map[string]string{"message": "Menu Coffee created successfully"})
 }
 
 // Barista API

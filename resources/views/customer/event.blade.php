@@ -1,7 +1,11 @@
 @extends('master.layout')
+@section('css')
+<link rel="stylesheet" href="{{asset('css/homepage/navbar.css')}}">
+@endsection
 @section('konten')
+<head>
 <link rel="stylesheet" href="{{asset('css/homepage/event.css')}}">
-
+</head>
 <section id="background-event" class="up-event">
     <div class="event-up">
         <div class="title">
@@ -17,7 +21,10 @@
                     </a>
                 </button>
             @else
-                <h1>No Upcoming Event</h1>
+                <div class="no-event">
+                    <h1>No Upcoming Event</h1>
+                    <h2>See you on the next upcoming event 👋</h2>
+                </div>
             @endif
         </div>
     </div>
@@ -30,9 +37,10 @@
     <div class="grid-container">
         @foreach ($previousEvents as $event)
             <div class="card">
-                <img src="/img/6.png" class="card-img-top" alt="{{ $event->title }}">
+                <img src="{{ asset(str_replace('../public', '', $event->image)) }}" class="card-img-top" alt="{{ $event->title }}">
                 <div class="card-body">
                     <h1>{{ $event->title }}</h1>
+                    <h5>{{ $event->date}}</h5>
                     <button type="button" class="button-description2">
                         <a href="{{ route('event.about', $event->id) }}">
                             <h5>Selengkapnya</h5>

@@ -39,7 +39,7 @@
                 </table>
                 <div class="row">
                     <div class="column">
-                        <button><a href="/staff/event">Back</a></button>
+                        <button type="button" onclick="history.back()">Back</button>
                     </div>
                     <div class="column">
                         <button type="submit">Save</button>

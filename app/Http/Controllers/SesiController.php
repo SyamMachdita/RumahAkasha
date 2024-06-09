@@ -35,7 +35,7 @@ class SesiController extends Controller
             } elseif (Auth::user()->role == 'owner') {
                 return redirect('/owner/dashboard');
             } elseif (Auth::user()->role == 'customer') {
-                return redirect('/home');
+                return redirect()->intended('/home');
             }
         } else {
             return redirect('/login')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();

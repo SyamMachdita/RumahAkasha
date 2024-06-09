@@ -60,42 +60,54 @@ class BaristaController extends Controller
     }
 
     public function update(Request $request, $id_barista)
-    {
-        $request->validate([
-            'nama_barista' => 'required',
-            'deskripsi' => 'required',
-            'tahun_kerja' => 'required',
-            'job_desk' => 'required',
-            'foto_barista' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+{
+    $client = new Client();
 
-        $barista = Barista::find($id_barista);
+    $multipart = [
+        [
+            'name'     => 'id_barista',
+            'contents' => $id_barista
+        ],
+        [
+            'name'     => 'nama_barista',
+            'contents' => $request->nama_barista
+        ],
+        [
+            'name'     => 'deskripsi',
+            'contents' => $request->deskripsi
+        ],
+        [
+            'name'     => 'tahun_kerja',
+            'contents' => $request->tahun_kerja
+        ],
+        [
+            'name'     => 'job_desk',
+            'contents' => $request->job_desk
+        ]
+    ];
 
-        if (!$barista) {
-            return response()->json(['message' => 'Barista not found'], 404);
-        }
-
-        $barista->nama_barista = $request->nama_barista;
-        $barista->deskripsi = $request->deskripsi;
-        $barista->tahun_kerja = $request->tahun_kerja;
-        $barista->job_desk = $request->job_desk;
-
-        if ($request->hasFile('foto_barista')) {
-            $image = $request->file('foto_barista');
-            $imageName = $image->getClientOriginalName();
-            $image->move(public_path('img/barista'), $imageName);
-            $barista->foto_barista = 'img/barista/' . $imageName;
-        }
-
-        $barista->save();
-
-        return redirect()->route('baristas.index');
+    if ($request->hasFile('foto_barista')) {
+        $multipart[] = [
+            'name'     => 'foto_barista',
+            'contents' => fopen($request->file('foto_barista')->getPathname(), 'r'),
+            'filename' => $request->file('foto_barista')->getClientOriginalName()
+        ];
     }
+
+    $response = $client->request('PUT', 'http://localhost:8080/api/edit-barista', [
+        'multipart' => $multipart
+    ]);
+
+    // Handle the response from the API as needed
+    // return $response->getBody()->getContents();
+    return redirect()->route('baristas.index');
+}
 
     public function destroy($id)
     {
-        $barista = Barista::findOrFail($id);
-        $barista->delete();
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->delete("http://localhost:8080/api/delete-barista?id_barista=$id");
 
         return redirect()->route('baristas.index');
     }

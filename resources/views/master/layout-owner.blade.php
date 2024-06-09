@@ -31,6 +31,7 @@
                         <li><a href="/owner/menu-coffee">Coffee</a></li>
                         <li><a href="/owner/menu-noncoffee">Non Coffee</a></li>
                         <li><a href="/owner/menu-signature">Signature</a></li>
+                        <li><a href="/owner/menu-food">Food</a></li>
                     </ul>
                 </li>
                 <li id="reservasi">
@@ -38,6 +39,9 @@
                 </li>
                 <li id="barista">
                     <a href="/owner/barista"><span class="las la-user-tie"></span><span>Barista</span></a>
+                </li>
+                <li id="barista">
+                    <a href="/owner/information"><span class="las la-chart-bar"></span><span>Information</span></a>
                 </li>
             </ul>
         </div>

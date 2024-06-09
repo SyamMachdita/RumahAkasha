@@ -1,19 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000&display=swap');
 
-:root{
-    --primary-color: #03045E;
-    --secondary-color: #023E8A;
-    --thrid-color: #CAF0F8;
-    --header-color: #FFFF;
-    --font-color: black;
+* {
+    font-family: 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans';
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Root */
+:root {
+    --primary-color: #01204E;
+    --secondary-color: #028391;
+    --thrid-color: #F6DCAC;
+    --forth-color: #FAA968;
+    --fifth-color: #F85525;
+    --font-white: #fff;
+    --font-black: #000;
     --box-shadow: 0 2px 4px var(--primary-color);
 }
 
-/* Existing styles */
+/* Navbar */
 .navbar.bg-body-tertiary {
     position: fixed !important;
     background-color: var(--primary-color) !important;
     border-bottom: #f2f2f2;
-    box-shadow: 0 5px 10px var(--secondary-color) !important;
+    box-shadow: 0 2.5px 5px var(--primary-color) !important;
     width: 100%;
     top: 0%;
     z-index: 999;
@@ -26,7 +49,7 @@
 
 .navbar-brand a {
     text-decoration: none;
-    color: var(--header-color) !important;
+    color: var(--font-white) !important;
 }
 
 .navbar-brand a:hover {
@@ -39,9 +62,11 @@
 }
 
 .menu {
+    display: flex;
     justify-content: center;
     margin-right: 50px;
     padding-right: 0px;
+    align-items: right;
 }
 
 .menu ul {
@@ -49,19 +74,22 @@
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: right;
 }
 
 .menu li {
     font-weight: 500;
     display: inline-block;
-    margin: 0 10px;
-    position: relative; /* Add this */
+    margin: 0 15px;
+    position: relative;
+    align-items: right;
 }
 
 .menu a {
     font-weight: 600;
-    color: var(--header-color);
+    color: var(--font-white);
     text-decoration: none;
+    align-items: right;
 }
 
 .menu a:hover {
@@ -71,75 +99,65 @@
 /* Dropdown menu */
 ul li ul.dropdown {
     position: absolute;
-    top: 100%; /* Add this */
-    /* left: 0; Add this */
+    top: 100%;
     background: none;
-    width: 200px; /* Change as needed */
-    display: none; /* Hide by default */
+    width: 200px;
+    display: none;
     list-style: none;
-    /* padding: 0; */
-    /* padding-top: 10px; */
     padding: none;
     margin: 0;
     width: 120px;
-    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Add transition */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
 }
 
 ul li ul.dropdown li {
-    display: block; /* Display block to take full width */
-    /* margin-bottom: 5px; */
+    display: block;
     margin: none;
     padding: none;
 }
 
 ul li ul.dropdown li a {
-    display: block; /* Add this */
+    display: block;
     padding: 10px;
     margin: none;
-    color: var(--header-color);
-    text-decoration: none; /* Add this */
+    color: var(--font-white);
+    text-decoration: none;
     background: var(--primary-color);
 }
 
 ul li ul.dropdown li a:hover {
-    /* background: var(--primary-color); Change as needed */
-    color: white;
+    color: var(--font-white);
     font-weight: bold;
 }
 
 /* Show the dropdown on hover */
 .menu li:hover > ul.dropdown {
     display: block;
+    opacity: 1; /* Show the dropdown */
+    visibility: visible; /* Show the dropdown */
 }
 
 li.profile {
-    width: 120px;
-    background-color: black;
-    display: flex; /* Add this */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 li.profile a {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white; /* Add this to make the text visible on black background */
+    color: var(--font-white);
 }
 
-li.profile ul{
+li.profile ul {
     background: none;
 }
 
-.profile li{
-    color: red;
-    background-color: red;
-}
-
-
-/* Footer styles */
+/* Footer */
 footer {
-    margin-top: 50px;
     width: 100%;
     background-color: var(--primary-color);
 }
@@ -177,21 +195,21 @@ footer {
 
 .column h4 {
     text-align: right;
-    color: var(--header-color);
+    color: var(--font-white);
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
 .alamat p {
-    color: var(--header-color);
+    color: var(--font-white);
     font-size: 14px;
 }
 
 .contact p,
 .sosial p {
     font-size: 14px;
-    color: var(--header-color);
+    color: var(--font-white);
     margin: 5px 0;
 }
 
@@ -204,7 +222,7 @@ footer {
     text-decoration: none;
     align-items: center;
     justify-content: center;
-    color: var(--header-color);
+    color: var(--font-white);
 }
 
 .sosial a:hover {
@@ -213,10 +231,89 @@ footer {
 
 .column > .content {
     width: 40px;
-    border: 1px solid red;
 }
 
 .fot-content {
     text-align: right;
     height: 85px;
+}
+
+.menu ul li {
+    color: var(--font-white);
+    font-weight: bolder;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-left: auto;
+    }
+
+    .navbar-brand {
+        margin-left: 10px;
+    }
+
+    .menu {
+        margin-right: 10px;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu li {
+        margin: 5px 0;
+        position: static;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+    ul li ul.dropdown {
+        top: initial;
+        left: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+
+    ul li ul.dropdown li {
+        margin: 0;
+    }
+
+    .profile {
+        display: block;
+        width: auto;
+        margin: 5px 0;
+    }
+
+    .profile a {
+        text-align: center;
+    }
+
+    .profile ul {
+        position: static;
+        background: none;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .column {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .column h4 {
+        text-align: center;
+    }
 }

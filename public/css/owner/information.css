@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --main-color: #0009D4; /* Ubah warna sesuai kebutuhan Anda */
+    --color-dark: #1d2231;
+    --text-grey: #8390a2;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+header h2 {
+    color: #222;
+    padding-left: 10px;
+}
+
+main {
+    margin-top: 10px;
+    padding: 2rem 1.5rem;
+    background-color: #f2f2f2;
+    min-height: calc(100vh-90px);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.card-single {
+    display: flex;
+    /* display: block; */
+    justify-content: space-between;
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 20px;
+    margin-bottom: 1px;
+    width: 400px;
+}
+
+.card h1 {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+.recent-grid {
+    margin-top: 20px !important;
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 65% 35%;
+}
+
+.card {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    color: var(--text-grey);
+}
+
+.card-header button {
+    background: var(--main-color);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: .8rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--main-color);
+}
+
+.card-header button:hover {
+    background: #FFFFFF;
+    color: var(--main-color);
+    cursor: pointer;
+}
+
+.ongoing {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.table-ongoing {
+    margin-top: 1rem;
+}
+
+.ongoing-header h1 {
+    color: var(--main-color);
+    text-align: left;
+    margin-top: 10px;
+}
+
+.ongoing-akasha table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.ongoing-akasha th, .ongoing-akasha td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.ongoing-akasha th {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+}
+
+.ongoing-akasha tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.ongoing-akasha tr:hover {
+    background-color: #d1e0f7;
+}
+
+.scroll-container {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.scroll-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+    border-radius: 4px;
+}
+
+.recent-grid {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card {
+    background: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-header h3 {
+    color: var(--text-grey);
+}
+
+.card-ongoing {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+/* .card-ongoing:hover {
+    transform: translateY(-10px);
+} */
+
+.ongoing-header h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.ongoing-akasha table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.ongoing-akasha th, .ongoing-akasha td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.ongoing-akasha th {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+}
+
+.ongoing-akasha tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.ongoing-akasha tr:hover {
+    background-color: #d1e0f7;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-single {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s;
+}
+
+/* .card-single:hover {
+    transform: translateY(-10px);
+} */
+
+.card-single div:first-child h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .sidebar {
+        width: 70px;
+    }
+
+    .main-content {
+        margin-left: 70px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .recent-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #nav-toggle:checked + .sidebar {
+        width: 240px;
+    }
+
+    #nav-toggle:checked ~ .main-content {
+        margin-left: 240px;
+    }
+}
+
+
+.card-single.tanggal{
+    /* background-color: var(--main-color); */
+    text-align: center;
+    margin-bottom: 10px;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.card-single.tanggal h2{
+    text-align: center !important;
+    color: white;
+}
+
+
+
+/* Add this to your existing CSS */
+.card-ongoing-reservation {
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* transition: transform 0.3s; */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-ongoing-reservation:hover {
+    /* transform: translateY(-10px); */
+}
+
+.ongoing-header-reservation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ongoing-header-reservation .icon {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+.ongoing-header-reservation h1 {
+    margin: 0;
+    color: var(--main-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.ongoing-akasha-reservation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ongoing-akasha-reservation h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+    text-align: right;
+}
+
+.ongoing-akasha-reservation .revenue {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.ongoing-akasha-reservation .reservations {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-grey);
+    text-align: right;
+}
+
+.card{
+    margin-bottom: none;
+}
+
+
+.menu-best ul {
+    padding-left: 20px;
+}
+
+.menu-best li {
+    list-style: decimal;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    color: grey;
+    font-weight: bold;
+}
+
+.card-single div:first-child span {
+    font-size: 1.2rem;
+    color: #888;
+    opacity: 0.9;
+}
+
+.card-single {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block; /* Mengubah tampilan menjadi blok */
+    width: 100%; /* Menyesuaikan lebar dengan kartu */
+}
+
+.card-single table {
+    width: 100%; /* Mengatur lebar tabel menjadi 100% */
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.card-single th, .card-single td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.card-single th {
+    background-color: var(--main-color);
+    color: #FFFFFF;
+}
+
+.card-single tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.card-single tr:hover {
+    background-color: #d1e0f7;
+}
+
+.card-single.ongoing-akasha h1{
+    color: #333;
+}

@@ -1,91 +1,50 @@
 :root {
-    --main-color: #0009D4; /* Ubah warna sesuai kebutuhan Anda */
+    --main-color: #0009D4; /* Change color as needed */
     --color-dark: #1d2231;
     --text-grey: #8390a2;
     --green-but: #16a81b;
 }
 
-header h2 {
-    color: #222;
-}
-
-header label span {
-    font-size: 1.7rem;
-    padding-left: 1rem;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
-    margin-top: 1rem;
-}
-
-.card-single {
-    display: flex;
-    justify-content: space-between;
-    background: #FFFFFF;
-    padding: 2rem;
-    border-radius: 2px;
-}
-
-.card-single div:last-child span {
-    font-size: 3rem;
-    color: var(--main-color);
-}
-
-.card-single div:first-child {
-    color: var(--text-grey);
-}
-
-.card-single:last-child {
-    background: var(--main-color);
-}
-
-.card-single:last-child h1,
-.card-single:last-child div:first-child span,
-.card-single:last-child div:last-child span {
-    color: #FFFFFF;
+.notes {
+    white-space: pre-wrap;
 }
 
 .recent-grid {
-    margin-top: 3.5rem;
-    /* display: grid; */
-    grid-gap: 2rem;
-    grid-template-columns: 65% auto;
-}
-
-.card {
-    background: #FFFFFF;
-    border-radius: 5px;
-}
-
-.card-header
-.card-body {
-    padding: 1rem;
-    margin-bottom: 20px; /* Atur jarak antara judul dan tabel */
-}
-
-.card-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.card-header button {
-    background: var(--main-color);
-    border-radius: 10px;
-    color: #FFFFFF;
-    font-size: .8rem;
-    padding: .5rem 1rem;
-    border: 1px solid var(--main-color);
+    padding: 20px;
 }
 
 .Reservasi {
-    margin-top: 20px; /* Sesuaikan dengan besar jarak yang diinginkan */
-    margin-left: 30px;
-    margin-right: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-header {
+    /* background-color: var(--main-color); */
+    color: #fff;
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px 10px 0 0;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-weight: 600;
+}
+
+.card-body {
+    padding-top: 0px;
+    padding-left: 20px;
+    padding-right: 2px;
 }
 
 table {
@@ -93,55 +52,45 @@ table {
     border-collapse: collapse;
 }
 
-thead tr {
-    border-top: 1px solid #f0f0f0;
+th, td {
+    padding: 12px 15px;
+    text-align: left;
     border-bottom: 1px solid #f0f0f0;
 }
 
-thead td {
-   background-color: var(--color-dark); /* Warna latar belakang header tabel */
-   font-weight: 700;
-   color: #fff; /* Warna teks header tabel */
-}
-
-
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    color: #222;
-}
-
-td {
-    padding: 12px; /* Padding diperbesar untuk memperjelas konten */
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    color: #222;
-    word-wrap: break-word; /* Atur agar teks mematahkan kata jika tidak ada ruang kosong */
-    overflow-wrap: break-word; /* Fallback untuk beberapa browser */
-}
-
 th {
-    background-color: var(--color-dark);
-    color: #fff; /* Warna teks header tabel */
-    /* background-color: #f2f2f2; */
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: 500;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.status {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status.pink {
+    background-color: #ff5c75;
 }
 
 .scroll-container {
-    overflow-x: auto; /* Membuat scroll horizontal */
-    white-space: nowrap; /* Mencegah konten berjajar secara vertikal */
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-.content {
-    width: 1000px; /* Lebar konten horizontal */
+.card-body ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
-.add-btn {
-    background-color: var(--green-but);
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: .8rem;
-    padding: .4rem 1rem;
-    border: 1px solid var(--green-but);
-    margin-right: 20px;
+.card-body ol li {
+    margin-bottom: 5px;
 }

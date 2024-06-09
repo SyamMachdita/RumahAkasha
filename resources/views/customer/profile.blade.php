@@ -1,9 +1,14 @@
-<title>Profile</title>
-<link rel="stylesheet" href="/css/homepage/profile.css">
 @extends('master.layout')
+@section('css')
+<link rel="stylesheet" href="{{asset('css/homepage/navbar.css')}}">
+@endsection
+@section('konten')
+<head>
+<link rel="stylesheet" href="{{asset('css/homepage/profile.css')}}">
+</head>
 @section('konten')
     <section>
-        <h1 class="header">Cerita Kita</h1>
+        <h1 class="header">Our History</h1>
         <div class="cerita">
             <div class="cerita-img">
                 <img src="/img/akasha/img3.jpg" alt="">
@@ -18,7 +23,7 @@
     </section>
 
     <section>
-        <h1 class="header">Cerita Kita</h1>
+        <h1 class="header">About Rumah Akasha</h1>
         <div class="cerita">
             <div class="cerita-content">
                 <h4>
@@ -35,6 +40,9 @@
 
     <section>
         <h1 class="header our-barista">Our Family</h1>
+        <div class="bar">
+        {{-- <h4 class="strip">---------------------------------------------------------------------</h4> --}}
+        </div>
         <div class="grid-container">
             @foreach ($barista as $baristas)
                 <div class="card">
@@ -42,17 +50,19 @@
                     <div class="card-body">
                         <div class="card-text">
                             <div class="barista">
-                                <h1>{{$baristas->nama_barista}}</h1>
+                                <h2><b>{{$baristas->nama_barista}}</b></h2>
                             </div>
                             <div class="jobdesk">
-                                <h1>{{$baristas->job_desk}}</h1>
+                                <h1>{{$baristas->job_desk}} | {{$baristas->tahun_kerja}}</h1>
                             </div>
+                            {{-- <hr> --}}
+                            <br>
                             <div class="deskripsi">
-                                <h1>{{$baristas->deskripsi}}</h1>
+                                <h1><i><q>{{$baristas->deskripsi}}</q></i></h1>
                             </div>
-                            <div class="tahun_kerja">
+                            {{-- <div class="tahun_kerja">
                                 <h1>{{$baristas->tahun_kerja}}</h1>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

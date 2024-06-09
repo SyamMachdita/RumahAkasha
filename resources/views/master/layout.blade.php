@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rumah Akasha</title>
     <link rel="stylesheet" href="{{asset('css/homepage/navbar.css')}}">
+    @yield('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
@@ -12,15 +13,16 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <div class="navbar-brand">
-                <a href="/home">Rumah Akasha</a>
+                <a href="/home">RUMAH AKASHA</a>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="/profile">About Us</a></li>
-                    <li><a href="#">Akasha Project</a></li>
-                    <li><a href="/event">Event</a></li>
+                    <li><a href="/profile">About us</a></li>
                     <li><a href="/menu">Menu</a></li>
-                    <li><a href="/reservasi">Reserve</a></li>
+                    {{-- <li><a href="#">Akasha Project</a></li> --}}
+                    <li><a href="/event">Event</a></li>
+                    <li><a href="/reservasi/create">Reserve</a></li>
+                    <li>|</li>
                     <li class="profile">
                         <a href="" class="drop-menu">
                             @if (Auth::check() && Auth::user()->role == 'customer')
@@ -35,7 +37,7 @@
                             @endif
 
                             @if (Auth::check() && Auth::user()->role == 'customer')
-                                <li><a href="#">Invoice</a></li>
+                                {{-- <li><a href="#">Invoice</a></li> --}}
                                 <li><a href="/logout">Log Out</a></li>
                             @endif
 
