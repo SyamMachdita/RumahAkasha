@@ -148,13 +148,13 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($latestReservasi->status_pembayaran === null)
+                                        @if ($reservation->status_pembayaran === null)
                                                 Belum Bayar
-                                        @elseif ($latestReservasi->reservasi_status === 'no order')
+                                            @elseif ($reservation->reservasi_status === 'no order')
                                                 No Order
-                                        @else
-                                            {{ $latestReservasi->status_pembayaran }}
-                                        @endif
+                                            @else
+                                                {{ $reservation->status_pembayaran }}
+                                            @endif
                                     </td>
                                 </tr>
                             @endforeach

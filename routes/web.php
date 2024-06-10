@@ -134,9 +134,9 @@ Route::prefix('owner')->middleware(['auth', 'userAkses:owner'])->group(function 
     // Menu Signature
     Route::get('/menu-signature', [SignatureController::class, 'get'])->name('signature.index');
     Route::get('/add-signature', function() {
-        return view('owner.formNonCoffee');
+        return view('owner.formSignature');
     });
-    Route::post('/api/formNonCoffee', [SignatureController::class, 'store'])->name('store.signature');
+    Route::post('/api/formSignature', [SignatureController::class, 'store'])->name('store.signature');
     Route::get('/edit-signature/{id_menu}', [SignatureController::class, 'edit'])->name('edit.signature');
     Route::put('/api/editsignature/{id_menu}', [SignatureController::class, 'update'])->name('update.signature');
     Route::delete('/api/delete-signature/{id_menu}', [SignatureController::class, 'destroy'])->name('destroy.signature');

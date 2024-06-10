@@ -32,12 +32,22 @@
                                         <td>{{ $item->no_telp }}</td>
                                         <td>{{ $item->tanggal }}</td>
                                         <td>{{ $item->jam }}</td>
-                                        <td>{{ $item->total_harga }}</td>
-                                        @if($item->status === null)
-                                        <td>Belum Bayar</td>
-                                        @else
-                                        <td>{{ $item->status }}</td>
-                                        @endif
+                                        <td>
+                                            @if ($item->total_harga == 0)
+                                                -
+                                            @else
+                                                {{ number_format($item->total_harga, 0, ',', '.') }}
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item->status_pembayaran === null)
+                                                Belum Bayar
+                                            @elseif ($item->reservasi_status === 'no order')
+                                                No Order
+                                            @else
+                                                {{ $item->status_pembayaran }}
+                                            @endif
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

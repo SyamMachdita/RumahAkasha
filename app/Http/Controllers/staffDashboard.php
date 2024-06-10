@@ -14,23 +14,29 @@ class staffDashboard extends Controller
         $oneWeekFromNow = $today->copy()->addWeek();
 
         $upcomingReservations = Reservasi::whereBetween('tanggal', [$today, $oneWeekFromNow])
-            ->join('users', 'reservasis.id_customer', '=', 'users.id')
-            ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
-            ->where('pembayarans.status', 'PAID')
-            ->select(
-                'users.full_name as name',
-                'reservasis.jumlah_orang as people',
-                'reservasis.tanggal as date',
-                'reservasis.jam as time',
-                'reservasis.tempat as place'
-            )
-            ->orderBy('reservasis.tanggal', 'asc')
-            ->get();
+        ->join('users', 'reservasis.id_customer', '=', 'users.id')
+        ->leftjoin('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
+        ->where(function ($query) {
+            $query->where('pembayarans.status', 'PAID')
+                  ->orWhere('reservasis.status', 'no order');
+        })
+        ->select(
+            'users.full_name as name',
+            'reservasis.jumlah_orang as people',
+            'reservasis.tanggal as date',
+            'reservasis.jam as time',
+            'reservasis.tempat as place'
+        )
+        ->orderBy('reservasis.tanggal', 'asc')
+        ->get();
 
             $previousReservations = Reservasi::whereDate('tanggal', '<', $today)
             ->join('users', 'reservasis.id_customer', '=', 'users.id')
-            ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
-            ->where('pembayarans.status', 'PAID')
+            ->leftjoin('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
+            ->where(function ($query) {
+                $query->where('pembayarans.status', 'PAID')
+                      ->orWhere('reservasis.status', 'no order');
+            })
             ->select(
                 'users.full_name as name',
                 'reservasis.jumlah_orang as people',

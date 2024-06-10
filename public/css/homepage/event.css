@@ -167,12 +167,13 @@ section{
 }
 
 .no-event h1 {
-    font-size: 64px;
-    color: var(--fifth-color);
+    font-size: 120px;
+    color: var(--font-white);
+    font-weight: bold;
 }
 
 .no-event h2 {
-    font-size: 24px;
+    font-size: 50px;
     color: var(--secondary-color);
 }
 

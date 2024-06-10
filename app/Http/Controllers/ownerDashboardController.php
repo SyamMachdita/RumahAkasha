@@ -14,6 +14,8 @@ class ownerDashboardController extends Controller
     public function owner_dashboard()
 {
     $today = Carbon::today();
+    $now = Carbon::now();
+
     $latestReservasi = Reservasi::latest('id_reservasi')
         ->join('users', 'reservasis.id_customer', '=', 'users.id')
         ->leftJoin('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
@@ -27,15 +29,31 @@ class ownerDashboardController extends Controller
         ->first();
 
     $sumEventDone = Event::where('date', '<=', $today)->count();
-    $sumReserveDone = Reservasi::where('tanggal', '<', $today)
+    $sumReserveDone = Reservasi::whereDate('tanggal', '<', $today)
+    // where(function($query) use ($today, $now) {
+    //     $query->whereDate('tanggal', '<', $today)
+    //           ->orWhere(function($query) use ($today, $now) {
+    //               $query->whereDate('tanggal', '=', $today)
+    //                     ->whereTime('jam', '<', $now->toTimeString());
+    //           });
+    // })
         ->join('users', 'reservasis.id_customer', '=', 'users.id')
         ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
         ->where('pembayarans.status', 'PAID')
         ->count();
 
-    $previousReservations = Reservasi::whereDate('tanggal', '<', $today)
+
+
+        $previousReservations = Reservasi::whereDate('tanggal', '<', $today)
+        // where(function($query) use ($today, $now) {
+        //     $query->whereDate('tanggal', '<', $today)
+        //           ->orWhere(function($query) use ($today, $now) {
+        //               $query->whereDate('tanggal', '=', $today)
+        //                     ->whereTime('jam', '<', $now->toTimeString());
+        //           });
+        // })
         ->join('users', 'reservasis.id_customer', '=', 'users.id')
-        ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
+        ->leftJoin('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi') // Menggunakan leftJoin agar reservasi tanpa pembayaran tetap terambil
         ->select(
             'users.full_name as name',
             'reservasis.jumlah_orang as people',
@@ -47,10 +65,12 @@ class ownerDashboardController extends Controller
             DB::raw('COALESCE(pembayarans.status, "Belum Bayar") as status_pembayaran'),
             DB::raw('COALESCE(reservasis.status, "no order") as reservasi_status')
         )
+        //  ->where('pembayarans.status', 'PAID')
         ->orderBy('reservasis.tanggal', 'desc')
+        ->orderBy('reservasis.jam', 'desc')
         ->get();
 
-    $previousEvents = Event::where('date', '<=', $today)
+    $previousEvents = Event::where('status', '=', 'done')
         ->orderBy('date', 'desc')
         ->get();
 
