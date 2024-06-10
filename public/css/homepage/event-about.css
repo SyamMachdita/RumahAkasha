@@ -54,7 +54,6 @@ body::-webkit-scrollbar {
     margin-bottom: 50px;
 }
 
-<<<<<<< HEAD
 .event_image {
     /* margin-top: 40px; */
     margin-right: 20px;
@@ -73,39 +72,6 @@ body::-webkit-scrollbar {
     height: auto;
     /* object-fit: cover; */
     transition: transform 0.3s ease-in-out;
-=======
-section.up-event{
-    height: 680px;
-    margin: 0;
-    margin-top: 0;
-    padding: 0;
-    /* border: 0.1px solid red; */
-    box-shadow: var(--box-shadow);
-}
-
-section{
-    /* border: 1px solid red; */
-    margin-top: 100px;
-    margin-right: 50px;
-    margin-left: 50px;
-    margin-bottom: 40px;
-    /* border: 1px solid red; */
-}
-
-
-
-/* Event Up */
-
-
-#background-event {
-    background-image: url('/img/6.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    margin-left: 50px;
-    margin-right: 50px;
-    border-radius: 40px;
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
 }
 
 .event_image img:hover {

@@ -158,6 +158,7 @@ li.profile ul {
 
 /* Footer */
 footer {
+    height: auto;
     width: 100%;
     background-color: var(--primary-color);
 }

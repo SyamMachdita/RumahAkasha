@@ -11,7 +11,7 @@ class Reservasi extends Model
     protected $table = 'reservasis';
     protected $primaryKey = 'id_reservasi';
     protected $fillable = [
-        'id_customer', 'tempat', 'jumlah_orang', 'tanggal', 'jam', 'note'
+        'id_customer', 'tempat', 'jumlah_orang', 'tanggal', 'jam', 'note', 'status'
     ];
     // public $timestamp = false;
 

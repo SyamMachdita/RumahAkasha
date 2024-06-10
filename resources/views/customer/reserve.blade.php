@@ -78,7 +78,7 @@
                                 <div class="col-12 mb-3">
                                     <div class="form-check">
                                         <label for="include-menu" class="form-check-label">Pesan Menu?</label>
-                                        <input type="checkbox" id="include-menu" class="form-check-input">
+                                        <input type="checkbox" id="include-menu" name="include_menu" class="form-check-input">
                                     </div>
                                 </div>
 
@@ -178,7 +178,12 @@
                                     </tbody>
                                 </table>
                             </div>
+                            @if ($existingReservation->pembayaran)
                             <h5>Total Payment : Rp. {{ number_format($existingReservation->pembayaran->total_harga) }}</h5>
+                            {{-- @else
+                                <h5>Total Payment : Rp. 0</h5> --}}
+                            @endif
+
                             @if ($isPaymentPending)
                             <button id="pay-button" class="btn btn-primary btn-block">Pay Now</button>
                             @elseif ($paymentStatus === 'PAID')

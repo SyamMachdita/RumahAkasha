@@ -54,7 +54,7 @@
         <div class="footer-content">
             <div class="column left-align"> <!-- Tambahkan class left-align -->
                 <div class="logo">
-                    <img src="/img/3.png" alt="Logo">
+                    <img src="/img/akasha/logo.png" alt="">
                 </div>
             </div>
             <div class="column right-align"> <!-- Tambahkan class right-align -->
@@ -75,8 +75,6 @@
                 <div class="contact">
                     <h4>Kontak</h4>
                     <div class="fot-content">
-                        <p>+62812912399 | Nobel</p>
-                        <p>+62812912399 | Nobel</p>
                         <p>+62812912399 | Nobel</p>
                     </div>
                 </div>

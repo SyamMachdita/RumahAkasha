@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <!--<title>Registration Form in HTML CSS</title>-->
     <!---Custom CSS File--->
-    <link rel="stylesheet" href="{{asset('css/staff/editevent.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/staff/createevent.css')}}" />
   </head>
   <body>
     <section class="container">

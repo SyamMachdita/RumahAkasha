@@ -23,7 +23,6 @@ type Event struct {
 	Status      string  `json:"status"`
 }
 
-<<<<<<< HEAD
 type MenuItemCoffee struct {
 	Name        string  `json:"name"`
 	Image       string  `json:"image"`
@@ -65,8 +64,6 @@ type Barista struct {
 	JobDesk     string `json:"job_desk"`
 }
 
-=======
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
 var db *sql.DB
 
 func main() {
@@ -82,7 +79,6 @@ func main() {
 	http.HandleFunc("/api/edit-event", editEvent)
 	http.HandleFunc("/api/delete-event", delEvent)
 
-<<<<<<< HEAD
 	// Owner Menu
 	http.HandleFunc("/api/formCoffee", createMenuCoffee)
 	http.HandleFunc("/api/formNonCoffee", createMenuNoncoffee)
@@ -96,8 +92,6 @@ func main() {
 	http.HandleFunc("/api/edit-barista", editBarista)
 	http.HandleFunc("/api/delete-barista", delBarista)
 
-=======
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
@@ -226,7 +220,6 @@ func delEvent(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Event deleted successfully"})
 }
-<<<<<<< HEAD
 
 // COFFEE -- OWNER
 func createMenuCoffee(w http.ResponseWriter, r *http.Request) {
@@ -643,5 +636,3 @@ func delBarista(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(map[string]string{"message": "Barista deleted successfully"})
 }
-=======
->>>>>>> parent of c7d7ae7 (registrasi_event_done)

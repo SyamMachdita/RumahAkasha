@@ -12,57 +12,62 @@ use Illuminate\Support\Facades\DB;
 class ownerDashboardController extends Controller
 {
     public function owner_dashboard()
-    {
-        $today = Carbon::today();
-        $latestReservasi = Reservasi::latest('id_reservasi')
+{
+    $today = Carbon::today();
+    $latestReservasi = Reservasi::latest('id_reservasi')
         ->join('users', 'reservasis.id_customer', '=', 'users.id')
-        ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
+        ->leftJoin('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
         ->select(
             'reservasis.*',
-            'pembayarans.status as status'
+            'users.full_name as customer_name',
+            'users.no_telp as customer_no_telp',
+            DB::raw('COALESCE(pembayarans.status, "Belum Bayar") as status_pembayaran'),
+            DB::raw('COALESCE(reservasis.status, "no order") as reservasi_status')
         )
         ->first();
 
-        $sumEventDone = Event::where('date', '<=', $today)->count();
-        $sumReserveDone = Reservasi::where('tanggal', '<', $today)
+    $sumEventDone = Event::where('date', '<=', $today)->count();
+    $sumReserveDone = Reservasi::where('tanggal', '<', $today)
         ->join('users', 'reservasis.id_customer', '=', 'users.id')
         ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
         ->where('pembayarans.status', 'PAID')
         ->count();
 
-        $previousReservations = Reservasi::whereDate('tanggal', '<', $today)
-            ->join('users', 'reservasis.id_customer', '=', 'users.id')
-            ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
-            ->where('pembayarans.status', 'PAID')
-            ->select(
-                'users.full_name as name',
-                'reservasis.jumlah_orang as people',
-                'reservasis.tanggal as date',
-                'reservasis.jam as time',
-                'reservasis.tempat as place',
-                'reservasis.note as notes',
-                'pembayarans.total_harga as total_bayar',
-                'pembayarans.status as status'
-            )
-            ->orderBy('reservasis.tanggal', 'desc')
-            ->get();
+    $previousReservations = Reservasi::whereDate('tanggal', '<', $today)
+        ->join('users', 'reservasis.id_customer', '=', 'users.id')
+        ->join('pembayarans', 'reservasis.id_reservasi', '=', 'pembayarans.id_reservasi')
+        ->select(
+            'users.full_name as name',
+            'reservasis.jumlah_orang as people',
+            'reservasis.tanggal as date',
+            'reservasis.jam as time',
+            'reservasis.tempat as place',
+            'reservasis.note as notes',
+            'pembayarans.total_harga as total_bayar',
+            DB::raw('COALESCE(pembayarans.status, "Belum Bayar") as status_pembayaran'),
+            DB::raw('COALESCE(reservasis.status, "no order") as reservasi_status')
+        )
+        ->orderBy('reservasis.tanggal', 'desc')
+        ->get();
 
-        $previousEvents = Event::where('date', '<=', $today)
-            ->orderBy('date', 'desc')
-            ->get();
+    $previousEvents = Event::where('date', '<=', $today)
+        ->orderBy('date', 'desc')
+        ->get();
 
-
-        $totalRevenue = DB::table('pembayarans')
+    $totalRevenue = DB::table('pembayarans')
         ->where('status', 'PAID')
         ->sum('total_harga');
 
-        $totalReservation = DB::table('pembayarans')
+    $totalReservation = DB::table('pembayarans')
         ->where('status', 'PAID')
         ->count();
-        return view('owner.homepage', compact(
-            'latestReservasi', 'sumEventDone', 'sumReserveDone', 'previousEvents', 'previousReservations','totalRevenue', 'totalReservation'
-        ));
-    }
+
+    return view('owner.homepage', compact(
+        'latestReservasi', 'sumEventDone', 'sumReserveDone', 'previousEvents', 'previousReservations', 'totalRevenue', 'totalReservation'
+    ));
+}
+
+
 
     public function owner_information()
     {

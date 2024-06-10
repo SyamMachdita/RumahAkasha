@@ -103,107 +103,69 @@ class ReservasiController extends Controller
 
 
 
-    public function store(Request $request)
-    {
-        $res = $request->all();
-        try {
-            $reservasi = Reservasi::create([
-                'id_customer' => $res['id_customer'],
-                'tempat' => $res['tempat'],
-                'jumlah_orang' => $res['jumlah_orang'],
-                'tanggal' => $res['tanggal'],
-                'jam' => $res['jam'],
-                'note' => $res['note'],
-            ]);
-
-            Log::info('Reservasi created successfully', ['reservasi' => $reservasi]);
-
-            $totalHarga = 0;
-            // Simpan data pesanan jika ada
-            // echo "<pre>";
-            // print_r($res);
-            // echo "</pre>";
-            //  die();
-            if (sizeof($res['menu'])> 0) {
-
-                foreach ($res['menu'] as $menu) {
-
-                    if($menu['jumlah_menu'] > 0){
-                        try{
-
-                            $pesanan = Pesanan::create([
-                                'id_customer' => $res['id_customer'],
-                                'id_menu' => $menu['id_menu'],
-                                'nama_menu' => $menu['nama_menu'],
-                                'harga_menu' => $menu['harga_menu'],
-                                'jumlah_menu' => $menu['jumlah_menu'],
-                                'id_reservasi' => $reservasi->id_reservasi,
-                            ]);
-                            }catch (QueryException $e) {
-                                echo "<pre>";
-                                print_r($e->getMessage());
-                                echo "</pre>";
-                                // Log::error('Error creating reservasi: ' . $e->getMessage(), ['exception' => $e]);
-                                // return redirect()->back()->with('error', 'Terjadi kesalahan saat membuat reservasi. Silakan coba lagi.');
-                            }
-                            Log::info('Pesanan created successfully', ['pesanan' => $pesanan]);
-
-                            $totalHarga += $menu['harga_menu'] * $menu['jumlah_menu'];
-                        }
-                    }
-                // dd($pesanan);
+public function store(Request $request)
+{
+    $res = $request->all();
+    try {
+        $status = 'no order';
+        if (isset($res['menu']) && sizeof($res['menu']) > 0) {
+            foreach ($res['menu'] as $menu) {
+                if ($menu['jumlah_menu'] > 0) {
+                    $status = 'with order';
+                    break;
+                }
             }
+        }
 
-            // Simpan data pembayaran
-            $arr_bayar = [
+        $reservasi = Reservasi::create([
+            'id_customer' => $res['id_customer'],
+            'tempat' => $res['tempat'],
+            'jumlah_orang' => $res['jumlah_orang'],
+            'tanggal' => $res['tanggal'],
+            'jam' => $res['jam'],
+            'note' => $res['note'],
+            'status' => $status,
+        ]);
+
+        Log::info('Reservasi created successfully', ['reservasi' => $reservasi]);
+
+        $totalHarga = 0;
+        if ($status === 'with order') {
+            foreach ($res['menu'] as $menu) {
+                if ($menu['jumlah_menu'] > 0) {
+                    try {
+                        $pesanan = Pesanan::create([
+                            'id_customer' => $res['id_customer'],
+                            'id_menu' => $menu['id_menu'],
+                            'nama_menu' => $menu['nama_menu'],
+                            'harga_menu' => $menu['harga_menu'],
+                            'jumlah_menu' => $menu['jumlah_menu'],
+                            'id_reservasi' => $reservasi->id_reservasi,
+                        ]);
+                        Log::info('Pesanan created successfully', ['pesanan' => $pesanan]);
+                        $totalHarga += $menu['harga_menu'] * $menu['jumlah_menu'];
+                    } catch (QueryException $e) {
+                        Log::error('Error creating pesanan: ' . $e->getMessage(), ['exception' => $e]);
+                        return redirect()->back()->with('error', 'Terjadi kesalahan saat membuat pesanan. Silakan coba lagi.');
+                    }
+                }
+            }
+        }
+
+        if ($totalHarga > 0) {
+            $pembayaran = Pembayaran::create([
                 'id_reservasi' => $reservasi->id_reservasi,
                 'id_customer' => $res['id_customer'],
                 'total_harga' => $totalHarga,
-            ];
-            // echo "<pre>";
-            // print_r($arr_bayar);
-            // echo "</pre>";
-            // die();
-            $pembayaran = Pembayaran::create($arr_bayar);
+            ]);
             Log::info('Pembayaran created successfully', ['pembayaran' => $pembayaran]);
-
-            return redirect()->route('reservasi.index')->with('success', 'Reservasi berhasil dibuat.');
-        } catch (\Exception $e) {
-            Log::error('Error creating reservasi: ' . $e->getMessage(), ['exception' => $e]);
-            return redirect()->back()->with('error', 'Terjadi kesalahan saat membuat reservasi. Silakan coba lagi.');
         }
+
+        return redirect()->route('reservasi.index')->with('success', 'Reservasi berhasil dibuat.');
+    } catch (\Exception $e) {
+        Log::error('Error creating reservasi: ' . $e->getMessage(), ['exception' => $e]);
+        return redirect()->back()->with('error', 'Terjadi kesalahan saat membuat reservasi. Silakan coba lagi.');
     }
-
-
-
-    public function callback(Request $request)
-{
-    // Get the JSON data from the request body
-    $notification = json_decode($request->getContent(), true);
-
-    // Display the received notification data and stop execution
-    dd($notification);
-
-    // The rest of your code won't run because dd() stops execution
-    $transaction_status = $notification['transaction_status'];
-    $order_id = $notification['order_id'];
-
-    $pembayaran = Pembayaran::where('order_id', $order_id)->first();
-
-    if ($pembayaran) {
-        if ($transaction_status == 'capture' || $transaction_status == 'settlement') {
-            $pembayaran->status = 'Lunas';
-        } else if ($transaction_status == 'pending') {
-            $pembayaran->status = 'Pending';
-        } else if ($transaction_status == 'deny' || $transaction_status == 'expire' || $transaction_status == 'cancel') {
-            $pembayaran->status = 'Failed';
-        }
-        $pembayaran->save();
-    }
-
-    return response()->json(['message' => 'Notification handled successfully']);
 }
-
-
 
 }

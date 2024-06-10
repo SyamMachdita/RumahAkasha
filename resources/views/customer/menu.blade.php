@@ -1,10 +1,7 @@
 @extends('master.layout')
-<<<<<<< HEAD
 @section('css')
 <link rel="stylesheet" href="{{asset('css/homepage/navbar.css')}}">
 @endsection
-=======
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
 @section('konten')
 <head>
     <link rel="stylesheet" href="{{ asset('css/homepage/menu.css') }}">
@@ -25,7 +22,6 @@
                     <div class="card-img">
                         <img src="{{ asset(str_replace('../public/', '', $menu->image)) }}" alt="{{ $menu->name }}">
 
-<<<<<<< HEAD
                     </div>
                     <div class="menu-name">
                         <h5>{{ $menu->name }}</h5>
@@ -101,85 +97,6 @@
                                 <p><q>{{ $men_sig->description }}</q></p>
                             </div>
                         </div>
-=======
-
-    <div class="main">
-        <div class="section-title">
-            <h2>Our Menu</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere quis eaque consectetur odio. Assumenda exercitationem labore, molestias, iusto qui, debitis quidem voluptatem ipsa soluta ipsum corrupti tenetur minima praesentium nihil.</p>
-
-        </div>
-        <div class="menus">
-            <div class="menu-column">
-                <h4>coffee</h4>
-                <div class="single-menu">
-                    <img src="jerapah.jpg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi1.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi2.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-column">
-                <h4>Non Coffee</h4>
-                <div class="single-menu">
-                    <img src="jerapah.jpg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi1.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi2.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="menu-column">
-                <h4>Signature</h4>
-                <div class="single-menu">
-                    <img src="jerapah.jpg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi1.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
-                    </div>
-                </div>
-                <div class="single-menu">
-                    <img src="kopi2.jpeg" alt="">
-                    <div class="menu-content">
-                        <h5>Title <span>Rp.15.000</span></h5>
-                        <p>lorem ipsum dolor sit amet.</p>
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
                     </div>
                 </div>
                 @endforeach
@@ -208,12 +125,5 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
-=======
-
-</body>
-</html>
-
->>>>>>> parent of c7d7ae7 (registrasi_event_done)
 @endsection

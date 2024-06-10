@@ -9,7 +9,6 @@ use App\Http\Controllers\CoffeeController;
 
 class CoffeeController extends Controller
 {
-
     public function get()
     {
         $menu = Menu::where('kategori', 'coffee')->get();
@@ -41,8 +40,6 @@ class CoffeeController extends Controller
                 ],
             ]
         ]);
-
-        // return $response->getBody()->getContents();
         return redirect()->route('coffee.index');
     }
 
@@ -90,15 +87,12 @@ class CoffeeController extends Controller
         $response = $client->request('PUT', 'http://localhost:8080/api/editMenu', [
             'multipart' => $multipart
         ]);
-
-        // Handle the response from the API as needed
-        // return $response->getBody()->getContents();
         return redirect()->route('coffee.index');
     }
 
     public function destroy($id_menu)
     {
-        $client =new \GuzzleHttp\Client();
+        $client = new \GuzzleHttp\Client();
 
         $response = $client->delete('http://localhost:8080/api/delete-menu', [
             'query' => ['id' => $id_menu]

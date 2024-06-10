@@ -1,11 +1,10 @@
 @extends('master.layout-owner')
 
 @section('konten')
-    <link rel="stylesheet" href="{{asset('css/owner/styles.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/owner/styles.css') }}">
     <main>
         <div class="cards">
             <div class="ongoing">
-
                 <div class="card-ongoing-reservation">
                     <div class="ongoing-header-reservation">
                         <span class="icon las la-chart-line"></span>
@@ -13,13 +12,12 @@
                     </div>
                     <div class="ongoing-akasha-reservation">
                         <h2 class="revenue">Rp. {{ number_format($totalRevenue, 0, ',', '.') }}</h2>
-                        <h2 class="reservations">Total Reservation : {{$totalReservation}}</h2>
+                        <h2 class="reservations">Total Reservation : {{ $totalReservation }}</h2>
                         <div class="reservation-button-container">
                             <button type="button" onclick="window.location.href='/owner/information'" class="reservation-button">View Details</button>
                         </div>
                     </div>
                 </div>
-
                 <div class="card-ongoing">
                     <div class="ongoing-header">
                         <h1>Latest Reservation</h1>
@@ -38,15 +36,19 @@
                             <tbody>
                                 @if($latestReservasi)
                                     <tr>
-                                        <td>{{ $latestReservasi->customer->name }}</td>
-                                        <td>{{ $latestReservasi->customer->no_telp }}</td>
+                                        <td>{{ $latestReservasi->customer_name }}</td>
+                                        <td>{{ $latestReservasi->customer_no_telp }}</td>
                                         <td>{{ $latestReservasi->tanggal }}</td>
                                         <td>{{ $latestReservasi->jam }}</td>
-                                        @if ($latestReservasi->status === null)
-                                        <td>Belum Bayar</td>
-                                        @else
-                                        <td>{{ $latestReservasi->status }}</td>
-                                        @endif
+                                        <td>
+                                            @if ($latestReservasi->status_pembayaran === null)
+                                                Belum Bayar
+                                            @elseif ($latestReservasi->reservasi_status === 'no order')
+                                                No Order
+                                            @else
+                                                {{ $latestReservasi->status_pembayaran }}
+                                            @endif
+                                        </td>
                                     </tr>
                                 @else
                                     <tr>
@@ -60,7 +62,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="information">
                 <div class="card-single tanggal">
@@ -79,7 +80,7 @@
                 </div>
                 <div class="card-single">
                     <div>
-                        <h1>{{$sumReserveDone}}</h1>
+                        <h1>{{ $sumReserveDone }}</h1>
                         <span>Reservation Done</span>
                     </div>
                     <div>
@@ -88,7 +89,6 @@
                 </div>
             </div>
         </div>
-
         <div class="recent-grid">
             <div class="card">
                 <div class="card-header">
@@ -140,8 +140,22 @@
                                     <td>{{ $reservation->name }}</td>
                                     <td>{{ $reservation->date }}</td>
                                     <td>{{ $reservation->time }}</td>
-                                    <td>{{ $reservation->total_bayar }}</td>
-                                    <td>{{ $reservation->status }}</td>
+                                    <td>
+                                        @if ($reservation->total_bayar === 0)
+                                            -
+                                        @else
+                                            {{ $reservation->total_bayar }}
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($latestReservasi->status_pembayaran === null)
+                                                Belum Bayar
+                                        @elseif ($latestReservasi->reservasi_status === 'no order')
+                                                No Order
+                                        @else
+                                            {{ $latestReservasi->status_pembayaran }}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
