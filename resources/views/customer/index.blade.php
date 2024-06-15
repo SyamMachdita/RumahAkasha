@@ -17,7 +17,7 @@
             <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt cumque similique quasi commodi voluptas beatae. Totam ad officia placeat qui quidem reiciendis corrupti Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci repellendus tempora impedit consequatur? Impedit culpa ipsa tenetur eaque reprehenderit vel, ratione suscipit et saepe illo porro quasi, repudiandae, dolore vitae.</h3>
             <div class="container">
                 <div class="wrapper">
-                    <img src="/img/akasha/img1.jpg">
+                    <img src="{{asset('img/akasha/img1.jpg')}}">
                     <img src="/img/akasha/img3.jpg">
                     <img src="/img/akasha/img1.jpg">
                     <img src="/img/akasha/img8.jpg">
@@ -44,7 +44,7 @@
                     </h1>
                 </div>
                 <button type="button" class="button-description">
-                    <a href="/profile">
+                    <a href="{{url('/profile')}}">
                         <h5>Selengkapnya</h5>
                     </a>
                 </button>

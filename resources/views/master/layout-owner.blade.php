@@ -16,10 +16,10 @@
         <div class="sidebar-menu">
             <ul>
                 <li id="dashboard" class="active">
-                    <a href="/owner/dashboard"><span class="las la-igloo"></span><span>Dashboard</span></a>
+                    <a href="{{url('/owner/dashboard')}}"><span class="las la-igloo"></span><span>Dashboard</span></a>
                 </li>
                 <li id="event">
-                    <a href="/owner/event"><span class="las la-calendar"></span><span>Event</span></a>
+                    <a href="{{url('/owner/event')}}"><span class="las la-calendar"></span><span>Event</span></a>
                 </li>
                 <li id="menu">
                     <a href="#" onclick="toggleSubmenu('menuSubmenu')">
@@ -28,20 +28,20 @@
                         <span class="las la-angle-down"></span>
                     </a>
                     <ul id="menuSubmenu" class="submenu">
-                        <li><a href="/owner/menu-coffee">Coffee</a></li>
-                        <li><a href="/owner/menu-noncoffee">Non Coffee</a></li>
-                        <li><a href="/owner/menu-signature">Signature</a></li>
-                        <li><a href="/owner/menu-food">Food</a></li>
+                        <li><a href="{{url('/owner/menu-coffee')}}">Coffee</a></li>
+                        <li><a href="{{url('/owner/menu-noncoffee')}}">Non Coffee</a></li>
+                        <li><a href="{{url('/owner/menu-signature')}}">Signature</a></li>
+                        <li><a href="{{url('/owner/menu-food')}}">Food</a></li>
                     </ul>
                 </li>
                 <li id="reservasi">
-                    <a href="/owner/reservasi"><span class="las la-book"></span><span>Reservasi</span></a>
+                    <a href="{{url('/owner/reservasi')}}"><span class="las la-book"></span><span>Reservasi</span></a>
                 </li>
                 <li id="barista">
-                    <a href="/owner/barista"><span class="las la-user-tie"></span><span>Barista</span></a>
+                    <a href="{{url('/owner/barista')}}"><span class="las la-user-tie"></span><span>Barista</span></a>
                 </li>
                 <li id="barista">
-                    <a href="/owner/information"><span class="las la-chart-bar"></span><span>Information</span></a>
+                    <a href="{{url('/owner/information')}}"><span class="las la-chart-bar"></span><span>Information</span></a>
                 </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
                 <div>
                     <h4>{{ Auth::user()->name }}</h4>
                 <small>
-                    <a href="/logout">Log Out</a>
+                    <a href="{{url('/logout')}}">Log Out</a>
                 </small>
                 </div>
             </div>

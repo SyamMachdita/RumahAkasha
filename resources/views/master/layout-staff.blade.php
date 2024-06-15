@@ -16,13 +16,13 @@
     <div class="sidebar-menu">
         <ul>
             <li id="staff-dashboard">
-                <a href="/staff/dashboard"><span class="las la-igloo"></span> <span>Dashboard</span></a>
+                <a href="{{url('/staff/dashboard')}}"><span class="las la-igloo"></span> <span>Dashboard</span></a>
             </li>
             <li id="staff-event">
-                <a href="/staff/event"><span class="las la-calendar"></span> <span>Event</span></a>
+                <a href="{{url('/staff/event')}}"><span class="las la-calendar"></span> <span>Event</span></a>
             </li>
             <li id="reservasi">
-                <a href="/staff/reservasi"><span class="las la-book"></span> <span>Reservasi</span></a>
+                <a href="{{url('/staff/reservasi')}}"><span class="las la-book"></span> <span>Reservasi</span></a>
             </li>
         </ul>
     </div>

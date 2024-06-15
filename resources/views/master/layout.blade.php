@@ -13,15 +13,15 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <div class="navbar-brand">
-                <a href="/home">RUMAH AKASHA</a>
+                <a href="{{url('/home')}}">RUMAH AKASHA</a>
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="/profile">About us</a></li>
-                    <li><a href="/menu">Menu</a></li>
+                    <li><a href="{{url('/profile')}}">About us</a></li>
+                    <li><a href="{{url('/menu')}}">Menu</a></li>
                     {{-- <li><a href="#">Akasha Project</a></li> --}}
-                    <li><a href="/event">Event</a></li>
-                    <li><a href="/reservasi/create">Reserve</a></li>
+                    <li><a href="{{url('/event')}}">Event</a></li>
+                    <li><a href="{{url('/reservasi/create')}}">Reserve</a></li>
                     <li>|</li>
                     <li class="profile">
                         <a href="" class="drop-menu">
@@ -33,12 +33,12 @@
                         </a>
                         <ul class= "dropdown">
                             @if (!Auth::check())
-                                <li><a href="/login">Login</a></li>
+                                <li><a href="{{url('/login')}}">Login</a></li>
                             @endif
 
                             @if (Auth::check() && Auth::user()->role == 'customer')
                                 {{-- <li><a href="#">Invoice</a></li> --}}
-                                <li><a href="/logout">Log Out</a></li>
+                                <li><a href="{{url('/logout')}}">Log Out</a></li>
                             @endif
 
                         </ul>

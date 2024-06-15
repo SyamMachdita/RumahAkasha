@@ -45,7 +45,7 @@
         </div>
 
         <div class="no-account">
-            <h5>Don't have an account?</h5> <a href="/register">Register Here</a>
+            <h5>Don't have an account?</h5> <a href="{{url('/register')}}">Register Here</a>
         </div>
     </div>
 
