@@ -9,7 +9,7 @@
 <body>
     <section class="container">
         <header>Add New Signature</header>
-        <form action="/owner/api/formSignature" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{url('/owner/api/formSignature')}}" method="POST" enctype="multipart/form-data" class="form">
         @csrf
 
             <div class="input-box">

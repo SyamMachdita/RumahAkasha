@@ -9,7 +9,7 @@
 <body>
     <section class="container">
         <header>Add New Food</header>
-        <form action="/owner/api/formFood" method="POST" enctype="multipart/form-data" class="form">
+        <form action="{{url('/owner/api/formFood')}}" method="POST" enctype="multipart/form-data" class="form">
         @csrf
 
             <div class="input-box">

@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Menu Non Coffee</h3>
-                            <a class="add-btn" href="/owner/add-noncoffee">+ Add</a>
+                            <a class="add-btn" href="{{url('/owner/add-noncoffee')}}">+ Add</a>
                         </div>
                             <div class="scroll-container">
                                 <div class="card-body">

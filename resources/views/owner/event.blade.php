@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Akasha Event</h3>
-                            <a class="add-btn" href="/owner/create-event">+ Add</a>
+                            <a class="add-btn" href="{{url('/owner/create-event')}}">+ Add</a>
                         </div>
                             <div class="scroll-container">
                                 <div class="card-body">

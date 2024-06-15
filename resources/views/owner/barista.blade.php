@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Barista</h3>
-                            <a class="add-btn" href="/owner/add-barista">+ Add</a>
+                            <a class="add-btn" href="{{url('/owner/add-barista')}}">+ Add</a>
                         </div>
                         <div class="card-body">
                             <table width="100%">

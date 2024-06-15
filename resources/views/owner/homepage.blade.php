@@ -14,7 +14,7 @@
                         <h2 class="revenue">Rp. {{ number_format($totalRevenue, 0, ',', '.') }}</h2>
                         <h2 class="reservations">Total Reservation : {{ $totalReservation }}</h2>
                         <div class="reservation-button-container">
-                            <button type="button" onclick="window.location.href='/owner/information'" class="reservation-button">View Details</button>
+                            <button type="button" onclick="window.location.href='{{url('/owner/information')}}'" class="reservation-button">View Details</button>
                         </div>
                     </div>
                 </div>

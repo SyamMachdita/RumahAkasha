@@ -57,7 +57,7 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <button type="button"><a href="/staff/event">Back</a></button>
+                    <button type="button"><a href="{{url('/staff/event')}}">Back</a></button>
                 </div>
                 <div class="column">
                     <button type="submit">Submit</button>

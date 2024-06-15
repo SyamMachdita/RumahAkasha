@@ -10,7 +10,7 @@
     <h1 class="header">Our History</h1>
     <div class="cerita">
         <div class="cerita-img">
-            <img src="/img/akasha/img3.jpg" alt="">
+            <img src="{{asset('img/akasha/img3.jpg')}}" alt="">
         </div>
         <div class="cerita-content">
             <h4>
@@ -32,7 +32,7 @@
         </div>
 
         <div class="cerita-img">
-            <img src="/img/akasha/img8.JPG" alt="">
+            <img src="{{asset('img/akasha/img8.JPG')}}" alt="">
         </div>
     </div>
 </section>

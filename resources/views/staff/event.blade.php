@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Akasha Event</h3>
-                            <a class="add-btn" href="/staff/create-event">+ Add</a>
+                            <a class="add-btn" href="{{url('/staff/create-event')}}">+ Add</a>
                         </div>
                         <div class="card-body">
                             <table width="100%">
@@ -46,7 +46,7 @@
                                         </td>
                                         <td>
                                             <form action="{{ route('destroy.event', $event->id) }}" method="POST">
-                                                <a href="/api/edit-event/{{$event->id}}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
+                                                <a href="{{url('/api/edit-event/{{$event->id}}')}}" class="action-btn" title="Edit"><span class="las la-edit"></span></a>
                                                 <a href="{{ route('staff.event.participants', $event->id) }}" class="action-btn" title="Checklist"><span class="las la-tasks"></span></a>
                                                 @csrf
                                                 @method('DELETE')

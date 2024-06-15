@@ -9,7 +9,7 @@
   <body>
     <section class="container">
       <header>Create New Event</header>
-      <form action="/api/create-event" method="POST" enctype="multipart/form-data" class="form">
+      <form action="{{url('/api/create-event')}}" method="POST" enctype="multipart/form-data" class="form">
         @csrf
         <div class="input-box">
           <label>Title</label>

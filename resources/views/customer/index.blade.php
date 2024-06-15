@@ -18,9 +18,9 @@
             <div class="container">
                 <div class="wrapper">
                     <img src="{{asset('img/akasha/img1.jpg')}}">
-                    <img src="/img/akasha/img3.jpg">
-                    <img src="/img/akasha/img1.jpg">
-                    <img src="/img/akasha/img8.jpg">
+                    <img src="{{asset('img/akasha/img3.jpg')}}">
+                    <img src="{{asset('img/akasha/img1.jpg')}}">
+                    <img src="{{asset('img/akasha/img8.jpg')}}">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
 
         <div class="profile-content">
             <div class="profile-img">
-                <img src="/img/akasha/img3.jpg" alt="">
+                <img src="{{asset('img/akasha/img3.jpg')}}" alt="">
             </div>
 
             <div class="description">

@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h3>Menu Signature</h3>
-                            <a class="add-btn" href="/owner/add-signature">+ Add</a>
+                            <a class="add-btn" href="{{url('/owner/add-signature')}}">+ Add</a>
                         </div>
                             <div class="scroll-container">
                                 <div class="card-body">

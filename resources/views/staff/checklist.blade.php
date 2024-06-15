@@ -40,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="column">
-                    <button type="button" onclick="window.location.href='/staff/event'">Back</button>
+                    <button type="button" onclick="window.location.href='{{url('/staff/event')}}'">Back</button>
                 </div>
                 <div class="column">
                     <button type="submit">Save</button>
