@@ -35,7 +35,7 @@
 
         <div class="profile-content">
             <div class="profile-img">
-                <img src="{{asset('img/akasha/img3.jpg')}}" alt="">
+                <img src="{{asset('img/akasha/img3.jpg')}}">
             </div>
 
             <div class="description">

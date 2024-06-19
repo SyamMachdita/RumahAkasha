@@ -54,7 +54,7 @@
         <div class="footer-content">
             <div class="column left-align"> <!-- Tambahkan class left-align -->
                 <div class="logo">
-                    <img src="/img/akasha/logo.png" alt="">
+                    <img src="{{asset('/img/akasha/logo.png')}}" alt="">
                 </div>
             </div>
             <div class="column right-align"> <!-- Tambahkan class right-align -->
@@ -63,7 +63,7 @@
                     <div class="fot-content">
                         <p>
                             <a href="https://www.instagram.com/rumah.akasha/?hl=id">
-                                <img src="/img/instagram.png" alt="#">
+                                <img src="{{asset('/img/instagram.png')}}" alt="#">
                                 rumah.akasha
                             </a>
                         </p>

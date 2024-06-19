@@ -41,7 +41,7 @@
             <div>
                 <h4>{{ Auth::user()->name }}</h4>
                 <small>
-                    <a href="/logout">Log Out</a>
+                    <a href="{{url('/logout')}}">Log Out</a>
                 </small>
             </div>
         </div>
