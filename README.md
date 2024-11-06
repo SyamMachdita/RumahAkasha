@@ -1,4 +1,4 @@
-# RumahAkasha
+# Website for Rumah Akasha
 
 **Tech Stack**:
 1. MySQL
