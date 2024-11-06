@@ -32,3 +32,7 @@ Dengan kehadiran website ini, Rumah Akasha dapat memperluas jangkauan promosi, m
 
 ### Owner Dashboard
 <img src="https://github.com/1ELo/RumahAkasha/blob/main/owner_dashboard.jpg" alt="Owner Dashboard" width="400"/>
+
+## Demo
+Tonton video demo di YouTube untuk melihat lebih lanjut mengenai Rumah Akasha:  
+[![Demo Video](https://img.youtube.com/vi/G2NcfM0tQg8/0.jpg)](https://youtu.be/G2NcfM0tQg8?si=W6hl5Z1JJS6PgQDZ)
