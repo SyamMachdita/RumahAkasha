@@ -1,5 +1,12 @@
 # Website for Rumah Akasha
 
+**Anggota Kelompok**:
+1. Tsalasa Kale Syamsu Machdita - 2602168425
+2. Regina Patricia Hartawan - 2602098614
+3. Daniel Hendra Susanto - 2602102145
+4. Sekar Ayu Nadita - 2602166640
+5. Lavender Nathania Adelya - 2602108483
+
 **Tech Stack**:
 1. MySQL
 2. HTML
