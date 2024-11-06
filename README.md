@@ -35,4 +35,5 @@ Dengan kehadiran website ini, Rumah Akasha dapat memperluas jangkauan promosi, m
 
 ## Demo
 Tonton video demo di YouTube untuk melihat lebih lanjut mengenai Rumah Akasha:  
+https://youtu.be/G2NcfM0tQg8?si=W6hl5Z1JJS6PgQDZ
 [![Demo Video](https://img.youtube.com/vi/G2NcfM0tQg8/0.jpg)](https://youtu.be/G2NcfM0tQg8?si=W6hl5Z1JJS6PgQDZ)
